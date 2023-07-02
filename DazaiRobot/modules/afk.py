@@ -2,9 +2,9 @@ import time
 from pyrogram import filters
 from pyrogram.types import Message
 
-from MukeshRobot import pbot
+from DazaiRobot import pbot
 
-from MukeshRobot.modules.no_sql.afk_db import add_afk, is_afk, remove_afk
+from DazaiRobot.modules.no_sql.afk_db import add_afk, is_afk, remove_afk
 def get_readable_time(seconds: int) -> str:
     count = 0
     readable_time = ""
