@@ -1,31 +1,31 @@
 from motor.motor_asyncio import AsyncIOMotorClient as MongoCli
 from pymongo import MongoClient, collection
 
-from MukeshRobot import  MONGO_DB_URI
+from DazaiRobot import  MONGO_DB_URI
 
 mongo = MongoCli(MONGO_DB_URI)
-Mukeshdb = mongo.MUK_ROB
+dazaidb = mongo.DAZ_ROB
 
 try:
     client = MongoClient(MONGO_DB_URI)
 except PyMongoError:
     exiter(1)
-main_db = client["MUKESH_ROBOT"]
+main_db = client["DAZAI_ROBOT"]
 
 
-MukeshXdb = main_db
+DazaiXdb = main_db
 
 
 def get_collection(name: str) -> collection:
     """ɢᴇᴛ ᴛʜᴇ ᴄᴏʟʟᴇᴄᴛɪᴏɴ ғʀᴏᴍ ᴅᴀᴛᴀʙᴀsᴇ."""
-    return MukeshXdb[name]
+    return DazaiXdb[name]
 
 
 class MongoDB:
     """Class for interacting with Bot database."""
 
     def __init__(self, collection) -> None:
-        self.collection = MukeshXdb[collection]
+        self.collection = DazaiXdb[collection]
 
     # Insert one entry into collection
     def insert_one(self, document):
