@@ -40,7 +40,7 @@ def reverse(update: Update, context: CallbackContext):
             update.effective_message.reply_text("Some exception occured")
 
 reverse_cmd = CommandHandler(
-    ["grs", "reverse", "pp", "p", "P", "grab"], reverse, run_async=True
+    ["grs", "reverse", "pp", "p", "P"], reverse, run_async=True
 )
 dispatcher.add_handler(reverse_cmd)
 
