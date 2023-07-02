@@ -1,6 +1,6 @@
-from MukeshRobot.modules.no_sql import Mukeshdb
+from DazaiRobot.modules.no_sql import Dazaidb
 
-afkdb = Mukeshdb.afk
+afkdb = Dazaidb.afk
 
 
 async def is_afk(user_id: int) -> bool:
