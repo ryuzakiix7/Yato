@@ -4,7 +4,7 @@ from pymongo import MongoClient, collection
 from DazaiRobot import  MONGO_DB_URI
 
 mongo = MongoCli(MONGO_DB_URI)
-dazaidb = mongo.DAZ_ROB
+Dazaidb = mongo.DAZ_ROB
 
 try:
     client = MongoClient(MONGO_DB_URI)
