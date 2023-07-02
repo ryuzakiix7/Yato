@@ -1,5 +1,5 @@
 import html
-import json
+import ujson
 import re
 from time import sleep
 
@@ -132,7 +132,7 @@ def chatbot(update: Update, context: CallbackContext):
         request = requests.get(
             f"https://kora-api.vercel.app/chatbot/2d94e37d-937f-4d28-9196-bd5552cac68b/DazaiRobot/Anonymous/message={message.text}"
         )
-        results = json.loads(request.text)
+        results = ujson.loads(request.text)
         sleep(0.7)
         message.reply_text(results["reply"])
 
