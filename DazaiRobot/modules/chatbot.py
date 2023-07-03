@@ -1,5 +1,5 @@
 import html
-import orjson
+import json
 import re
 from time import sleep
 
@@ -22,24 +22,24 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-import DazaiRobot.modules.sql.chatbot_sql as sql
-from DazaiRobot import BOT_ID, BOT_NAME, BOT_USERNAME, dispatcher
-from DazaiRobot.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
-from DazaiRobot.modules.log_channel import gloggable
+import MukeshRobot.modules.sql.chatbot_sql as sql
+from MukeshRobot import BOT_ID, BOT_NAME, BOT_USERNAME, dispatcher
+from MukeshRobot.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
+from MukeshRobot.modules.log_channel import gloggable
 
 
 @user_admin_no_reply
 @gloggable
-def dazairm(update: Update, context: CallbackContext) -> str:
+def fallenrm(update: Update, context: CallbackContext) -> str:
     query: Optional[CallbackQuery] = update.callback_query
     user: Optional[User] = update.effective_user
     match = re.match(r"rm_chat\((.+?)\)", query.data)
     if match:
         user_id = match.group(1)
         chat: Optional[Chat] = update.effective_chat
-        is_dazai = sql.set_dazai(chat.id)
-        if is_dazai:
-            is_dazai = sql.set_dazai(user_id)
+        is_fallen = sql.set_fallen(chat.id)
+        if is_fallen:
+            is_fallen = sql.set_fallen(user_id)
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"AI_DISABLED\n"
@@ -58,16 +58,16 @@ def dazairm(update: Update, context: CallbackContext) -> str:
 
 @user_admin_no_reply
 @gloggable
-def dazaiadd(update: Update, context: CallbackContext) -> str:
+def fallenadd(update: Update, context: CallbackContext) -> str:
     query: Optional[CallbackQuery] = update.callback_query
     user: Optional[User] = update.effective_user
     match = re.match(r"add_chat\((.+?)\)", query.data)
     if match:
         user_id = match.group(1)
         chat: Optional[Chat] = update.effective_chat
-        is_dazai = sql.rem_dazai(chat.id)
-        if is_dazai:
-            is_dazai = sql.rem_dazai(user_id)
+        is_fallen = sql.rem_fallen(chat.id)
+        if is_fallen:
+            is_fallen = sql.rem_fallen(user_id)
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"AI_ENABLE\n"
@@ -86,7 +86,7 @@ def dazaiadd(update: Update, context: CallbackContext) -> str:
 
 @user_admin
 @gloggable
-def dazai(update: Update, context: CallbackContext):
+def fallen(update: Update, context: CallbackContext):
     message = update.effective_message
     msg = "• ᴄʜᴏᴏsᴇ ᴀɴ ᴏᴩᴛɪᴏɴ ᴛᴏ ᴇɴᴀʙʟᴇ/ᴅɪsᴀʙʟᴇ ᴄʜᴀᴛʙᴏᴛ"
     keyboard = InlineKeyboardMarkup(
@@ -104,7 +104,7 @@ def dazai(update: Update, context: CallbackContext):
     )
 
 
-def dazai_message(context: CallbackContext, message):
+def fallen_message(context: CallbackContext, message):
     reply_message = message.reply_to_message
     if message.text.lower() == "fallen":
         return True
@@ -121,34 +121,34 @@ def chatbot(update: Update, context: CallbackContext):
     message = update.effective_message
     chat_id = update.effective_chat.id
     bot = context.bot
-    is_dazai = sql.is_dazai(chat_id)
-    if is_dazai:
+    is_fallen = sql.is_fallen(chat_id)
+    if is_fallen:
         return
 
     if message.text and not message.document:
-        if not dazai_message(context, message):
+        if not fallen_message(context, message):
             return
         bot.send_chat_action(chat_id, action="typing")
         request = requests.get(
-            f"https://kora-api.vercel.app/chatbot/2d94e37d-937f-4d28-9196-bd5552cac68b/DazaiRobot/Anonymous/message={message.text}"
+            f"https://api.safone.me/chatbot?query={message.text}&user_id={chat_id}&bot_name=Group_Controller&bot_master=Mukesh"
         )
-        results = orjson.loads(request.text)
-        sleep(0.7)
-        message.reply_text(results["reply"])
+        results = json.loads(request.text)
+        sleep(0.5)
+        message.reply_text(results["response"])
 
 
 __help__ = f"""
-*{BOT_NAME} has an chatbot which provides you a seemingless chatting experience :*
+*{BOT_NAME} ʜᴀs ᴀɴ ᴄʜᴀᴛʙᴏᴛ ᴡʜɪᴄʜ ᴘʀᴏᴠɪᴅᴇs ʏᴏᴜ ᴀ sᴇᴇᴍɪɴɢʟᴇss ᴄʜᴀᴛᴛɪɴɢ ᴇxᴘᴇʀɪᴇɴᴄᴇ :**
 
- »  /chatbot *:* Shows chatbot control panel
+ »  /ᴄʜᴀᴛʙᴏᴛ *:* sʜᴏᴡs ᴄʜᴀᴛʙᴏᴛ ᴄᴏɴᴛʀᴏʟ ᴘᴀɴᴇʟ
 """
 
 __mod_name__ = "Cʜᴀᴛʙᴏᴛ"
 
 
-CHATBOTK_HANDLER = CommandHandler("chatbot", dazai, run_async=True)
-ADD_CHAT_HANDLER = CallbackQueryHandler(dazaiadd, pattern=r"add_chat", run_async=True)
-RM_CHAT_HANDLER = CallbackQueryHandler(dazairm, pattern=r"rm_chat", run_async=True)
+CHATBOTK_HANDLER = CommandHandler("chatbot", fallen, run_async=True)
+ADD_CHAT_HANDLER = CallbackQueryHandler(fallenadd, pattern=r"add_chat", run_async=True)
+RM_CHAT_HANDLER = CallbackQueryHandler(fallenrm, pattern=r"rm_chat", run_async=True)
 CHATBOT_HANDLER = MessageHandler(
     Filters.text
     & (~Filters.regex(r"^#[^\s]+") & ~Filters.regex(r"^!") & ~Filters.regex(r"^\/")),
