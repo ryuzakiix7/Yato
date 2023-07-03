@@ -3,8 +3,8 @@ import textwrap
 
 from PIL import Image, ImageDraw, ImageFont
 
-from MukeshRobot import telethn as bot
-from MukeshRobot.events import register
+from DazaiRobot import telethn as bot
+from DazaiRobot.events import register
 
 
 @register(pattern="^/mmf ?(.*)")
@@ -62,7 +62,7 @@ async def drawText(image_path, text):
 
     else:
 
-        fnt = "./MukeshRobot/resources/default.ttf"
+        fnt = "./DazaiRobot/resources/default.ttf"
 
     m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
 
