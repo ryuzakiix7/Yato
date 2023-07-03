@@ -1,8 +1,11 @@
+# ""DEAR PRO PEOPLE,  DON'T REMOVE & CHANGE THIS LINE
+# TG :- enidxx
+#     UPDATE   :- 
+#     GITHUB :- .... ""
 import math
 import os
-import urllib.request as urllib
-from html import escape
 import textwrap
+import urllib.request as urllib
 from html import escape
 from urllib.parse import quote as urlquote
 
@@ -10,9 +13,7 @@ import cv2
 import ffmpeg
 from bs4 import BeautifulSoup
 from cloudscraper import CloudScraper
-import requests
-from bs4 import BeautifulSoup as bs
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -20,13 +21,15 @@ from telegram import (
     TelegramError,
     Update,
 )
-from telegram.ext import CallbackContext
+from telegram.ext import CallbackContext, CallbackQueryHandler, CommandHandler
 from telegram.utils.helpers import mention_html
 
-from MukeshRobot import dispatcher
-from MukeshRobot.modules.disable import DisableAbleCommandHandler
+from DazaiRobot import dispatcher
+from DazaiRobot import telethn as bot
+from DazaiRobot.events import register as asux
 
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
+
 
 def convert_gif(input):
     """ғᴜɴᴄᴛɪᴏɴ ᴛᴏ ᴄᴏɴᴠᴇʀᴛ ᴍᴘ4 ᴛᴏ ᴡᴇʙᴍ(ᴠᴘ9)!(ᴀʙɪsʜɴᴏɪ)"""
@@ -243,7 +246,7 @@ def kang(update, context):
         elif msg.reply_to_message.sticker and msg.reply_to_message.sticker.emoji:
             sticker_emoji = msg.reply_to_message.sticker.emoji
         else:
-            sticker_emoji = "❤️"
+            sticker_emoji = "🙂"
 
         adding_process = msg.reply_text(
             "<b>ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ...ғᴏʀ ᴀ ᴍᴏᴍᴇɴᴛ</b>",
@@ -279,19 +282,19 @@ def kang(update, context):
                     png_sticker=open("kangsticker.png", "rb"),
                     emojis=sticker_emoji,
                 )
-                keyboard = InlineKeyboardMarkup(
+                edited_keyboard = InlineKeyboardMarkup(
+                    [
                         [
-                            [
-                                InlineKeyboardButton(
-                                    text="ᴠɪᴇᴡ ᴘᴀᴄᴋ ", url=f"t.me/addstickers/{packname}"
-                                )
-                            ]
+                            InlineKeyboardButton(
+                                text="⎋ ᴘᴀᴄᴋ ⎋", url=f"t.me/addstickers/{packname}"
+                            )
                         ]
-                    )  
+                    ]
+                )
                 adding_process.edit_text(
                     f"<b>ʏᴏᴜʀ sᴛɪᴄᴋᴇʀ ʜᴀs ʙᴇᴇɴ ᴀᴅᴅᴇᴅ!</b>"
                     f"\nᴇᴍᴏᴊɪ ɪs ➼ : {sticker_emoji}",
-                    reply_markup=keyboard,
+                    reply_markup=edited_keyboard,
                     parse_mode=ParseMode.HTML,
                 )
 
@@ -324,19 +327,19 @@ def kang(update, context):
                         png_sticker=open("kangsticker.png", "rb"),
                         emojis=sticker_emoji,
                     )
-                    keyboard = InlineKeyboardMarkup(
+                    edited_keyboard = InlineKeyboardMarkup(
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="ᴠɪᴇᴡ ᴘᴀᴄᴋ ", url=f"t.me/addstickers/{packname}"
+                                    text="⎋ ᴘᴀᴄᴋ ⎋", url=f"t.me/addstickers/{packname}"
                                 )
                             ]
                         ]
-                    )  
+                    )
                     adding_process.edit_text(
                         f"<b>ʏᴏᴜʀ sᴛɪᴄᴋᴇʀ ʜᴀs ʙᴇᴇɴ ᴀᴅᴅᴇᴅ!</b>"
                         f"\nᴇᴍᴏᴊɪ ɪs ➼ : {sticker_emoji}",
-                        reply_markup=keyboard,
+                        reply_markup=edited_keyboard,
                         parse_mode=ParseMode.HTML,
                     )
                 elif e.message == "Invalid sticker emojis":
@@ -344,19 +347,19 @@ def kang(update, context):
                 elif e.message == "Stickers_too_much":
                     msg.reply_text("Max packsize reached. Press F to pay respecc.")
                 elif e.message == "Internal Server Error: sticker set not found (500)":
-                    keyboard = InlineKeyboardMarkup(
+                    edited_keyboard = InlineKeyboardMarkup(
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="ᴠɪᴇᴡ ᴘᴀᴄᴋ ", url=f"t.me/addstickers/{packname}"
+                                    text="⎋ ᴘᴀᴄᴋ ⎋", url=f"t.me/addstickers/{packname}"
                                 )
                             ]
                         ]
-                    )  
+                    )
                     msg.reply_text(
                         f"<b>ʏᴏᴜʀ sᴛɪᴄᴋᴇʀ ʜᴀs ʙᴇᴇɴ ᴀᴅᴅᴇᴅ!</b>"
                         f"\nᴇᴍᴏᴊɪ ɪs ➼ : {sticker_emoji}",
-                        reply_markup=keyboard,
+                        reply_markup=edited_keyboard,
                         parse_mode=ParseMode.HTML,
                     )
                 print(e)
@@ -390,19 +393,19 @@ def kang(update, context):
                     tgs_sticker=open("kangsticker.tgs", "rb"),
                     emojis=sticker_emoji,
                 )
-                keyboard = InlineKeyboardMarkup(
+                edited_keyboard = InlineKeyboardMarkup(
+                    [
                         [
-                            [
-                                InlineKeyboardButton(
-                                    text="ᴠɪᴇᴡ ᴘᴀᴄᴋ ", url=f"t.me/addstickers/{packname}"
-                                )
-                            ]
+                            InlineKeyboardButton(
+                                text="⎋ ᴘᴀᴄᴋ ⎋", url=f"t.me/addstickers/{packname}"
+                            )
                         ]
-                    )  
+                    ]
+                )
                 adding_process.edit_text(
                     f"<b>ʏᴏᴜʀ sᴛɪᴄᴋᴇʀ ʜᴀs ʙᴇᴇɴ ᴀᴅᴅᴇᴅ!</b>"
                     f"\nᴇᴍᴏᴊɪ ɪs ➼ : {sticker_emoji}",
-                    reply_markup=keyboard,
+                    reply_markup=edited_keyboard,
                     parse_mode=ParseMode.HTML,
                 )
             except TelegramError as e:
@@ -421,19 +424,19 @@ def kang(update, context):
                 elif e.message == "Invalid sticker emojis":
                     msg.reply_text("Invalid emoji(s).")
                 elif e.message == "Internal Server Error: sticker set not found (500)":
-                    keyboard = InlineKeyboardMarkup(
+                    edited_keyboard = InlineKeyboardMarkup(
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="ᴠɪᴇᴡ ᴘᴀᴄᴋ ", url=f"t.me/addstickers/{packname}"
+                                    text="⎋ ᴘᴀᴄᴋ ⎋", url=f"t.me/addstickers/{packname}"
                                 )
                             ]
                         ]
-                    )  
+                    )
                     adding_process.edit_text(
                         f"<b>ʏᴏᴜʀ sᴛɪᴄᴋᴇʀ ʜᴀs ʙᴇᴇɴ ᴀᴅᴅᴇᴅ!</b>"
                         f"\nᴇᴍᴏᴊɪ ɪs ➼ : {sticker_emoji}",
-                        reply_markup=keyboard,
+                        reply_markup=edited_keyboard,
                         parse_mode=ParseMode.HTML,
                     )
                 print(e)
@@ -467,19 +470,19 @@ def kang(update, context):
                     webm_sticker=open("kangsticker.webm", "rb"),
                     emojis=sticker_emoji,
                 )
-                keyboard = InlineKeyboardMarkup(
+                edited_keyboard = InlineKeyboardMarkup(
+                    [
                         [
-                            [
-                                InlineKeyboardButton(
-                                    text="ᴠɪᴇᴡ ᴘᴀᴄᴋ ", url=f"t.me/addstickers/{packname}"
-                                )
-                            ]
+                            InlineKeyboardButton(
+                                text="⎋ ᴘᴀᴄᴋ ⎋", url=f"t.me/addstickers/{packname}"
+                            )
                         ]
-                    )  
+                    ]
+                )
                 adding_process.edit_text(
                     f"<b>ʏᴏᴜʀ sᴛɪᴄᴋᴇʀ ʜᴀs ʙᴇᴇɴ ᴀᴅᴅᴇᴅ!</b>"
                     f"\nᴇᴍᴏᴊɪ ɪs ➼ : {sticker_emoji}",
-                    reply_markup=keyboard,
+                    reply_markup=edited_keyboard,
                     parse_mode=ParseMode.HTML,
                 )
             except TelegramError as e:
@@ -498,11 +501,11 @@ def kang(update, context):
                 elif e.message == "Invalid sticker emojis":
                     msg.reply_text("Invalid emoji(s).")
                 elif e.message == "Internal Server Error: sticker set not found (500)":
-                    keyboard = InlineKeyboardMarkup(
+                    edited_keyboard = InlineKeyboardMarkup(
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="ᴠɪᴇᴡ ᴘᴀᴄᴋ ", url=f"t.me/addstickers/{packname}"
+                                    text="⎋ ᴘᴀᴄᴋ ⎋", url=f"t.me/addstickers/{packname}"
                                 )
                             ]
                         ]
@@ -510,7 +513,7 @@ def kang(update, context):
                     adding_process.edit_text(
                         f"<b>ʏᴏᴜʀ sᴛɪᴄᴋᴇʀ ʜᴀs ʙᴇᴇɴ ᴀᴅᴅᴇᴅ!</b>"
                         f"\nᴇᴍᴏᴊɪ ɪs ➼ : {sticker_emoji}",
-                        reply_markup=keyboard,
+                        reply_markup=edited_keyboard,
                         parse_mode=ParseMode.HTML,
                     )
                 print(e)
@@ -551,19 +554,19 @@ def kang(update, context):
                 png_sticker=open("kangsticker.png", "rb"),
                 emojis=sticker_emoji,
             )
-            keyboard = InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton(
-                                    text="ᴠɪᴇᴡ ᴘᴀᴄᴋ ", url=f"t.me/addstickers/{packname}"
-                                )
-                            ]
-                        ]
-                    )  
+            edited_keyboard = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            text="⎋ ᴘᴀᴄᴋ ⎋", url=f"t.me/addstickers/{packname}"
+                        )
+                    ]
+                ]
+            )
             adding_process.edit_text(
                 f"<b>ʏᴏᴜʀ sᴛɪᴄᴋᴇʀ ʜᴀs ʙᴇᴇɴ ᴀᴅᴅᴇᴅ!</b>"
                 f"\nᴇᴍᴏᴊɪ ɪs ➼ : {sticker_emoji}",
-                reply_markup=keyboard,
+                reply_markup=edited_keyboard,
                 parse_mode=ParseMode.HTML,
             )
         except OSError as e:
@@ -591,19 +594,19 @@ def kang(update, context):
                     png_sticker=open("kangsticker.png", "rb"),
                     emojis=sticker_emoji,
                 )
-                keyboard = InlineKeyboardMarkup(
+                edited_keyboard = InlineKeyboardMarkup(
+                    [
                         [
-                            [
-                                InlineKeyboardButton(
-                                    text="ᴠɪᴇᴡ ᴘᴀᴄᴋ ", url=f"t.me/addstickers/{packname}"
-                                )
-                            ]
+                            InlineKeyboardButton(
+                                text="⎋ ᴘᴀᴄᴋ ⎋", url=f"t.me/addstickers/{packname}"
+                            )
                         ]
-                    )  
+                    ]
+                )
                 adding_process.edit_text(
                     f"<b>ʏᴏᴜʀ sᴛɪᴄᴋᴇʀ ʜᴀs ʙᴇᴇɴ ᴀᴅᴅᴇᴅ!</b>"
                     f"\nᴇᴍᴏᴊɪ ɪs ➼ : {sticker_emoji}",
-                    reply_markup=keyboard,
+                    reply_markup=edited_keyboard,
                     parse_mode=ParseMode.HTML,
                 )
             elif e.message == "Invalid sticker emojis":
@@ -629,17 +632,16 @@ def kang(update, context):
                     packs = f"t.me/addstickers/{packname}"
         else:
             packs = f"t.me/addstickers/{packname}"
-            keyboard = InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton(
-                                    text="ᴠɪᴇᴡ ᴘᴀᴄᴋ ", url=f"t.me/addstickers/{packname}"
-                                )
-                            ]
-                        ]
-                    )  
+
+        edited_keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(text="sᴛɪᴄᴋᴇʀ ᴘᴀᴄᴋ", url=f"{packs}"),
+                ],
+            ]
+        )
         msg.reply_text(
-            packs_text, reply_markup=keyboard, parse_mode=ParseMode.MARKDOWN
+            packs_text, reply_markup=edited_keyboard, parse_mode=ParseMode.MARKDOWN
         )
     try:
         if os.path.isfile("kangsticker.png"):
@@ -669,16 +671,8 @@ def makepack_internal(
     name = user.first_name
     name = name[:50]
     keyboard = InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton(
-                                    text="ᴠɪᴇᴡ ᴘᴀᴄᴋ ", url=f"t.me/addstickers/{packname}"
-                                )
-                            ]
-                        ]
-                    )  
-    
-    
+        [[InlineKeyboardButton(text="⎋ ᴘᴀᴄᴋ ⎋", url=f"t.me/addstickers/{packname}")]]
+    )
     try:
         extra_version = ""
         if packnum > 0:
@@ -821,21 +815,202 @@ def video(update: Update, context: CallbackContext):
             "Please reply to a gif for me to get it's video."
         )
 
-                             
-__help__ = """
- ❍ /sᴛɪᴄᴋᴇʀɪᴅ *:* ʀᴇᴘʟʏ ᴛᴏ ᴀ sᴛɪᴄᴋᴇʀ ᴛᴏ ᴍᴇ ᴛᴏ ᴛᴇʟʟ ʏᴏᴜ ɪᴛs ғɪʟᴇ ɪᴅ.
- ❍ /getsticker *:* ʀᴇᴘʟʏ ᴛᴏ ᴀ sᴛɪᴄᴋᴇʀ ᴛᴏ ᴍᴇ ᴛᴏ ᴜᴘʟᴏᴀᴅ ɪᴛs ʀᴀᴡ ᴘɴɢ ғɪʟᴇ.
- ❍ /kang *:* ʀᴇᴘʟʏ ᴛᴏ ᴀ sᴛɪᴄᴋᴇʀ ᴛᴏ ᴀᴅᴅ ɪᴛ ᴛᴏ ʏᴏᴜʀ ᴘᴀᴄᴋ.
- ❍ /stickers *:* ғɪɴᴅ sᴛɪᴄᴋᴇʀs ғᴏʀ ɢɪᴠᴇɴ ᴛᴇʀᴍ ᴏɴ ᴄᴏᴍʙᴏᴛ sᴛɪᴄᴋᴇʀ ᴄᴀᴛᴀʟᴏɢᴜᴇ
-"""
 
-__mod_name__ = "Kᴀɴɢ"
-STICKERID_HANDLER = DisableAbleCommandHandler("stickerid", stickerid, run_async=True)
-GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker, run_async=True)
-KANG_HANDLER = DisableAbleCommandHandler("kang", kang, admin_ok=True, run_async=True)
-STICKERS_HANDLER = DisableAbleCommandHandler("stickers", cb_sticker, run_async=True)
+Credit = "Abishnoi69"
 
+
+@asux(pattern="^/mmf ?(.*)")
+async def handler(event):
+    if event.fwd_from:
+        return
+
+    if not event.reply_to_msg_id:
+        await event.reply("Provide Some Text To Draw!")
+
+        return
+
+    reply_message = await event.get_reply_message()
+
+    if not reply_message.media:
+        await event.reply("```ʀᴇᴘʟʏ ᴛᴏ ᴀ ɪᴍᴀɢᴇ/sᴛɪᴄᴋᴇʀ.```")
+
+        return
+
+    file = await bot.download_media(reply_message)
+
+    msg = await event.reply("```ᴍᴇᴍɪғʏɪɴɢ ᴛʜɪs ɪᴍᴀɢᴇ! 😉 ```")
+
+    if "Abishnoi69" in Credit:
+        pass
+
+    else:
+        await event.reply("ᴛʜɪs ɴɪɢɢᴀ ʀᴇᴍᴏᴠᴇᴅ ᴄʀᴇᴅɪᴛ ʟɪɴᴇ ғʀᴏᴍ ᴄᴏᴅᴇ 😶")
+
+    text = str(event.pattern_match.group(1)).strip()
+
+    if len(text) < 1:
+        return await msg.reply("ʏᴏᴜ ᴍɪɢʜᴛ ᴡᴀɴᴛ ᴛᴏ ᴛʀʏ `/mmf text`")
+
+    meme = await drawText(file, text)
+
+    await bot.send_file(event.chat_id, file=meme, force_document=False)
+
+    await msg.delete()
+
+    os.remove(meme)
+
+
+async def drawText(image_path, text):
+    img = Image.open(image_path)
+
+    os.remove(image_path)
+
+    i_width, i_height = img.size
+
+    if os.name == "nt":
+        fnt = "ariel.ttf"
+
+    else:
+        fnt = "./Exon/modules/resources/asu.ttf"
+
+    m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
+
+    if ";" in text:
+        upper_text, lower_text = text.split(";")
+
+    else:
+        upper_text = text
+
+        lower_text = ""
+
+    draw = ImageDraw.Draw(img)
+
+    current_h, pad = 10, 5
+
+    if upper_text:
+        for u_text in textwrap.wrap(upper_text, width=15):
+            u_width, u_height = draw.textsize(u_text, font=m_font)
+
+            draw.text(
+                xy=(((i_width - u_width) / 2) - 2, int((current_h / 640) * i_width)),
+                text=u_text,
+                font=m_font,
+                fill=(0, 0, 0),
+            )
+
+            draw.text(
+                xy=(((i_width - u_width) / 2) + 2, int((current_h / 640) * i_width)),
+                text=u_text,
+                font=m_font,
+                fill=(0, 0, 0),
+            )
+
+            draw.text(
+                xy=((i_width - u_width) / 2, int(((current_h / 640) * i_width)) - 2),
+                text=u_text,
+                font=m_font,
+                fill=(0, 0, 0),
+            )
+
+            draw.text(
+                xy=(((i_width - u_width) / 2), int(((current_h / 640) * i_width)) + 2),
+                text=u_text,
+                font=m_font,
+                fill=(0, 0, 0),
+            )
+
+            draw.text(
+                xy=((i_width - u_width) / 2, int((current_h / 640) * i_width)),
+                text=u_text,
+                font=m_font,
+                fill=(255, 255, 255),
+            )
+
+            current_h += u_height + pad
+
+    if lower_text:
+        for l_text in textwrap.wrap(lower_text, width=15):
+            u_width, u_height = draw.textsize(l_text, font=m_font)
+
+            draw.text(
+                xy=(
+                    ((i_width - u_width) / 2) - 2,
+                    i_height - u_height - int((20 / 640) * i_width),
+                ),
+                text=l_text,
+                font=m_font,
+                fill=(0, 0, 0),
+            )
+
+            draw.text(
+                xy=(
+                    ((i_width - u_width) / 2) + 2,
+                    i_height - u_height - int((20 / 640) * i_width),
+                ),
+                text=l_text,
+                font=m_font,
+                fill=(0, 0, 0),
+            )
+
+            draw.text(
+                xy=(
+                    (i_width - u_width) / 2,
+                    (i_height - u_height - int((20 / 640) * i_width)) - 2,
+                ),
+                text=l_text,
+                font=m_font,
+                fill=(0, 0, 0),
+            )
+
+            draw.text(
+                xy=(
+                    (i_width - u_width) / 2,
+                    (i_height - u_height - int((20 / 640) * i_width)) + 2,
+                ),
+                text=l_text,
+                font=m_font,
+                fill=(0, 0, 0),
+            )
+
+            draw.text(
+                xy=(
+                    (i_width - u_width) / 2,
+                    i_height - u_height - int((20 / 640) * i_width),
+                ),
+                text=l_text,
+                font=m_font,
+                fill=(255, 255, 255),
+            )
+
+            current_h += u_height + pad
+
+    image_name = "memify.webp"
+
+    webp_file = os.path.join(image_name)
+
+    img.save(webp_file, "webp")
+
+    return webp_file
+
+
+__mod_name__ = "𝐒ᴛɪᴄᴋᴇʀ"
+
+
+
+STICKERID_HANDLER = CommandHandler("stickerid", stickerid, run_async=True)
+GETSTICKER_HANDLER = CommandHandler("getsticker", getsticker, run_async=True)
+GETVIDSTICKER_HANDLER = CommandHandler("getvidsticker", getvidsticker, run_async=True)
+KANG_HANDLER = CommandHandler("kang", kang, pass_args=True, run_async=True)
+DEL_HANDLER = CommandHandler("delsticker", delsticker, run_async=True)
+STICKERS_HANDLER = CommandHandler("stickers", cb_sticker, run_async=True)
+VIDEO_HANDLER = CommandHandler("getvideo", video, run_async=True)
+CBSCALLBACK_HANDLER = CallbackQueryHandler(cbs_callback, pattern="cbs_", run_async=True)
+
+dispatcher.add_handler(VIDEO_HANDLER)
+dispatcher.add_handler(CBSCALLBACK_HANDLER)
 dispatcher.add_handler(STICKERS_HANDLER)
 dispatcher.add_handler(STICKERID_HANDLER)
 dispatcher.add_handler(GETSTICKER_HANDLER)
+dispatcher.add_handler(GETVIDSTICKER_HANDLER)
 dispatcher.add_handler(KANG_HANDLER)
+dispatcher.add_handler(DEL_HANDLER)
