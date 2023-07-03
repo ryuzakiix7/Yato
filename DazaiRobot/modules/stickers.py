@@ -868,7 +868,7 @@ async def drawText(image_path, text):
     i_width, i_height = img.size
 
     if os.name == "nt":
-        fnt = "AVENGEANCE HEROIC AVENGER AT.otf"
+        fnt = "ariel.ttf"
 
     else:
         fnt = "./DazaiRobot/modules/resources/default.ttf"
