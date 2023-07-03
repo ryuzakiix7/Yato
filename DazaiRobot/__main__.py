@@ -84,6 +84,12 @@ PM_START_TEXT = """
 """
 
 buttons = [
+    [ 
+        InlineKeyboardButton(text="🛡️", callback_data="dazai_"),
+        InlineKeyboardButton(text="💳", callback_data="source_"),
+        InlineKeyboardButton(text="🧑‍💻", url=f"tg://user?id={OWNER_ID}"),
+        InlineKeyboardButton(text="🖥️", callback_data="help_back"),
+    ],    
     [
         InlineKeyboardButton(
             text="sᴜᴍᴍᴏɴ ᴍᴇ",
@@ -420,7 +426,7 @@ def Dazai_about_callback(update: Update, context: CallbackContext):
                         ),
                         InlineKeyboardButton(
                             text="ɢɪᴛʜᴜʙ",
-                            url="https://github.com/adi6804/DazaiRobot",
+                            url="https://github.com/Anonymous-068/DazaiRobot",
                         ),
                     ],
                     [
@@ -455,7 +461,7 @@ def Source_about_callback(update: Update, context: CallbackContext):
 ᴀɴᴅ ᴜsɪɴɢ [sǫʟᴀʟᴄʜᴇᴍʏ](https://www.sqlalchemy.org) ᴀɴᴅ [ᴍᴏɴɢᴏ](https://cloud.mongodb.com) ᴀs ᴅᴀᴛᴀʙᴀsᴇ.
 
 
-*ʜᴇʀᴇ ɪs ᴍʏ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ :* [ɢɪᴛʜᴜʙ](https://github.com/adi6804/DazaiRobot)
+*ʜᴇʀᴇ ɪs ᴍʏ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ :* [ɢɪᴛʜᴜʙ](https://github.com/Anonymous-068/DazaiRobot)
 
 
 {BOT_NAME} ɪs ʟɪᴄᴇɴsᴇᴅ ᴜɴᴅᴇʀ ᴛʜᴇ [ᴍɪᴛ ʟɪᴄᴇɴsᴇ](https://github.com/adi6804/DazaiRobot/blob/main/LICENSE).
@@ -726,14 +732,14 @@ def main():
                 chat_id=f"@{SUPPORT_CHAT}",
                 photo=START_IMG,
                 caption=f"""
-ㅤ🥀 {BOT_NAME} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ...
+ㅤ🥀 {BOT_NAME} ɪs ʙᴀᴄᴋ ᴛᴏ ᴡᴏʀᴋ!
 
-┏•❅──────────────❅•┓
-ㅤ★ **ᴘʏᴛʜᴏɴ :** `{y()}`
-ㅤ★ **ʟɪʙʀᴀʀʏ :** `{telever}`
-ㅤ★ **ᴛᴇʟᴇᴛʜᴏɴ :** `{tlhver}`
-ㅤ★ **ᴩʏʀᴏɢʀᴀᴍ :** `{pyrover}`
-┗•❅──────────────❅•┛""",
+┏•───────────────•┓
+ㅤ★ ᴘʏᴛʜᴏɴ : `{y()}`
+ㅤ★ ʟɪʙʀᴀʀʏ : `{telever}`
+ㅤ★ ᴛᴇʟᴇᴛʜᴏɴ : `{tlhver}`
+ㅤ★ ᴩʏʀᴏɢʀᴀᴍ : `{pyrover}`
+┗•───────────────•┛""",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
