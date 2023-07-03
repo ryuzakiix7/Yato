@@ -816,7 +816,7 @@ def video(update: Update, context: CallbackContext):
         )
 
 
-Credit = "Abishnoi69"
+Credit = "Anonymous-068"
 
 
 @asux(pattern="^/mmf ?(.*)")
@@ -840,7 +840,7 @@ async def handler(event):
 
     msg = await event.reply("```ᴍᴇᴍɪғʏɪɴɢ ᴛʜɪs ɪᴍᴀɢᴇ! 😉 ```")
 
-    if "Abishnoi69" in Credit:
+    if "Anonymous-068" in Credit:
         pass
 
     else:
