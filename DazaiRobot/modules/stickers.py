@@ -819,7 +819,7 @@ def video(update: Update, context: CallbackContext):
 Credit = "Anonymous-068"
 
 
-@asux(pattern="^/mmf ?(.*)")
+@asux(pattern="^/asishsksksm ?(.*)")
 async def handler(event):
     if event.fwd_from:
         return
