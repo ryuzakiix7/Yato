@@ -1,5 +1,5 @@
-from MukeshRobot import dispatcher
-from MukeshRobot.modules.no_sql import get_collection
+from DazaiRobot import dispatcher
+from DazaiRobot.modules.no_sql import get_collection
 
 USERS_DB = get_collection("USERS")
 CHATS_DB = get_collection("CHATS")
