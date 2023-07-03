@@ -868,10 +868,10 @@ async def drawText(image_path, text):
     i_width, i_height = img.size
 
     if os.name == "nt":
-        fnt = "ariel.ttf"
+        fnt = "AVENGEANCE HEROIC AVENGER AT.otf"
 
     else:
-        fnt = "./Exon/modules/resources/asu.ttf"
+        fnt = "./DazaiRobot/modules/resources/default.ttf"
 
     m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
 
