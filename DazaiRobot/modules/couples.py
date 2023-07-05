@@ -1,9 +1,9 @@
 import random
 from datetime import datetime
-from FallenRobot import pbot as pgram
-from FallenRobot import DRAGONS as SUPREME_USERS
+from DazaiRobot import pbot as pgram
+from DazaiRobot import DRAGONS as SUPREME_USERS
 from pyrogram import filters
-from FallenRobot.modules.mongo.couples_db import get_couple,save_couple,del_couple
+from DazaiRobot.modules.mongo.couples_db import get_couple,save_couple,del_couple
 
 def dt():
     now = datetime.now()
@@ -31,7 +31,7 @@ CAP = """
 {0} + {1} = 💘\n
 `ɴᴇᴡ ᴄᴏᴜᴘʟᴇ ᴏғ ᴛʜᴇ ᴅᴀʏ ᴄᴀɴ ʙᴇ ᴄʜᴏsᴇɴ ᴀᴛ 12AM {2}`
 """
-COUPLES_PIC = "https://graph.org/file/92f6c0af097288607ab73.jpg"
+COUPLES_PIC = "https://te.legra.ph/file/1a51f3b709f83df326c75.jpg"
 
 
 @pgram.on_message(filters.command("scouple") & filters.group)
