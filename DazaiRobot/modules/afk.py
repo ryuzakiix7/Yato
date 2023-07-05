@@ -278,7 +278,7 @@ async def afk_watcher_func(self: Client, ctx: Message):
                                 f"{mentioned_user_first_name} is currently away. Reason: {reasonafk}",
                                 f"{mentioned_user_first_name} is temporarily unavailable. Reason: {reasonafk}",
                                 f"{mentioned_user_first_name} is AFK. Reason: {reasonafk}.",
-                                 
+                            ]   
                             msg += random.choice(mentioned_afk_messages)
                         if afktype == "animation":
                             if str(reasonafk) == "None":
