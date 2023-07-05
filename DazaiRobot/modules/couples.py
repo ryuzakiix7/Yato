@@ -27,7 +27,7 @@ today = str(dt()[0])
 
 
 CAP = """
-**💌 ᴄᴏᴜᴘʟᴇs ᴏғ ᴛʜᴇ ᴅᴀʏ : :**\n
+**💌 ᴄᴏᴜᴘʟᴇs ᴏғ ᴛʜᴇ ᴅᴀʏ :**\n
 {0} + {1} = 💘\n
 `ɴᴇᴡ ᴄᴏᴜᴘʟᴇ ᴏғ ᴛʜᴇ ᴅᴀʏ ᴄᴀɴ ʙᴇ ᴄʜᴏsᴇɴ ᴀᴛ 12AM {2}`
 """
@@ -89,12 +89,12 @@ async def nibba_nibbi(_, message):
                 c1_mention = (await _.get_users(c1_id)).mention 
                 c2_mention = (await _.get_users(c2_id)).mention
                 
-                couple_selection_message = f"""**💌 Couple Of The Day : :**
+                couple_selection_message = f"""**💌 Couple Of The Day :**
 {c1_mention} + {c2_mention} = 💘
 `ɴᴇᴡ ᴄᴏᴜᴘʟᴇ ᴏf ᴛʜᴇ ᴅᴀʏ ᴄᴀɴ ʙᴇ ᴄʜᴏsᴇɴ ᴀᴛ 12AM {tomorrow}`"""
                 await _.send_photo(message.chat.id,photo=COUPLES_PIC,caption=couple_selection_message)
             except :
-                couple_selection_message = f"""**💌 Couple Of The Day : :**
+                couple_selection_message = f"""**💌 Couple Of The Day :**
 {c1_id} + {c1_id} = 💘
 `New Couple Of The Day Can Be Chosen At 12AM {tomorrow}`"""
                 await _.send_photo(message.chat.id,photo=COUPLES_PIC,caption=couple_selection_message)
