@@ -5,10 +5,10 @@ import random
 from pyrogram import filters, enums, Client
 from pyrogram.types import Message
 
-from FallenRobot.modules.mongo.afk_db import add_afk, is_afk, remove_afk
-from FallenRobot import pbot as app
-from FallenRobot.utils.errors import capture_err
-from FallenRobot.utils.human_read import get_readable_time2
+from DazaiRobot.modules.mongo.afk_db import add_afk, is_afk, remove_afk
+from DazaiRobot import pbot as app
+from DazaiRobot.utils.errors import capture_err
+from DazaiRobot.utils.human_read import get_readable_time2
 
 
 # Handle set AFK Command
