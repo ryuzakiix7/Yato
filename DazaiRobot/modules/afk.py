@@ -1,170 +1,299 @@
-import html
+import time
+import re
 import random
 
-from telegram import MessageEntity, Update
-from telegram.error import BadRequest
-from telegram.ext import CallbackContext, Filters, MessageHandler
+from pyrogram import filters, enums, Client
+from pyrogram.types import Message
 
-from DazaiRobot import dispatcher
-from DazaiRobot.modules.disable import (
-    DisableAbleCommandHandler,
-    DisableAbleMessageHandler,
-)
-from DazaiRobot.modules.sql import afk_sql as sql
-from DazaiRobot.modules.users import get_user_id
-
-AFK_GROUP = 7
-AFK_REPLY_GROUP = 8
+from FallenRobot.modules.mongo.afk_db import add_afk, is_afk, remove_afk
+from FallenRobot import pbot as app
+from FallenRobot.utils.errors import capture_err
+from FallenRobot.utils.human_read import get_readable_time2
 
 
-def afk(update: Update, context: CallbackContext):
-    args = update.effective_message.text.split(None, 1)
-    user = update.effective_user
+# Handle set AFK Command
+@app.on_message(filters.command(["afk"]))
+async def active_afk(self: Client, ctx: Message):
+    if ctx.sender_chat:
+        return await ctx.reply_text("You can only use this command in a private chat.", del_in=6)
 
-    if not user:  # ignore channels
-        return
+    user_id = ctx.from_user.id
+    verifier, reasondb = await is_afk(user_id)
 
-    if user.id in [777000, 1087968824]:
-        return
+    if verifier:
+        await remove_afk(user_id)
 
-    notice = ""
-    if len(args) >= 2:
-        reason = args[1]
-        if len(reason) > 100:
-            reason = reason[:100]
-            notice = "\nYour afk reason was shortened to 100 characters."
-    else:
-        reason = ""
-
-    sql.set_afk(update.effective_user.id, reason)
-    fname = update.effective_user.first_name
-    try:
-        update.effective_message.reply_text("{} is now away!{}".format(fname, notice))
-    except BadRequest:
-        pass
-
-
-def no_longer_afk(update: Update, context: CallbackContext):
-    user = update.effective_user
-    message = update.effective_message
-
-    if not user:  # ignore channels
-        return
-
-    res = sql.rm_afk(user.id)
-    if res:
-        if message.new_chat_members:  # dont say msg
-            return
-        firstname = update.effective_user.first_name
         try:
-            options = [
-                "{} is here!",
-                "{} is back!",
-                "{} is now in the chat!",
-                "{} is awake!",
-                "{} is back online!",
-                "{} is finally here!",
-                "Welcome back! {}",
-                "Where is {}?\nIn the chat!",
-            ]
-            chosen_option = random.choice(options)
-            update.effective_message.reply_text(chosen_option.format(firstname))
-        except:
-            return
+            afktype = reasondb["type"]
+            timeafk = reasondb["time"]
+            data = reasondb["data"]
+            reasonafk = reasondb["reason"]
+            seenago = get_readable_time2((int(time.time() - timeafk)))
 
+            if afktype == "animation":
+                send = (
+                    await ctx.reply_animation(data, caption=f"{ctx.from_user.mention} [`{ctx.from_user.id}`] is no longer AFK for {seenago}.")
+                    if str(reasonafk) == "None"
+                    else await ctx.reply_animation(data, caption=f"{ctx.from_user.mention} [`{ctx.from_user.id}`] is no longer AFK for {seenago}. Reason: {reasonafk}")
+                )
+            elif afktype == "photo":
+                send = (
+                    await ctx.reply_photo(photo=f"downloads/{user_id}.jpg", caption=f"{ctx.from_user.mention} [`{ctx.from_user.id}`] is no longer AFK for {seenago}.")
+                    if str(reasonafk) == "None"
+                    else await ctx.reply_photo(photo=f"downloads/{user_id}.jpg", caption=f"{ctx.from_user.mention} [`{ctx.from_user.id}`] is no longer AFK for {seenago}. Reason: {reasonafk}")
+                )
+            elif afktype == "text":
+                send = await ctx.reply_text(f"{ctx.from_user.mention} [`{ctx.from_user.id}`] is no longer AFK for {seenago}.", disable_web_page_preview=True)
+            elif afktype == "text_reason":
+                send = await ctx.reply_text(f"{ctx.from_user.mention} [`{ctx.from_user.id}`] is no longer AFK for {seenago}. Reason: {reasonafk}", disable_web_page_preview=True)
+        except Exception:
+            send = await ctx.reply_text(f"{ctx.from_user.first_name} [`{ctx.from_user.id}`] is online.", disable_web_page_preview=True)
 
-def reply_afk(update: Update, context: CallbackContext):
-    bot = context.bot
-    message = update.effective_message
-    userc = update.effective_user
-    userc_id = userc.id
-    if message.entities and message.parse_entities(
-        [MessageEntity.TEXT_MENTION, MessageEntity.MENTION]
-    ):
-        entities = message.parse_entities(
-            [MessageEntity.TEXT_MENTION, MessageEntity.MENTION]
-        )
+        return
 
-        chk_users = []
-        for ent in entities:
-            if ent.type == MessageEntity.TEXT_MENTION:
-                user_id = ent.user.id
-                fst_name = ent.user.first_name
-
-                if user_id in chk_users:
-                    return
-                chk_users.append(user_id)
-
-            if ent.type != MessageEntity.MENTION:
-                return
-
-            user_id = get_user_id(message.text[ent.offset : ent.offset + ent.length])
-            if not user_id:
-                # Should never happen, since for a user to become AFK they must have spoken. Maybe changed username?
-                return
-
-            if user_id in chk_users:
-                return
-            chk_users.append(user_id)
-
-            try:
-                chat = bot.get_chat(user_id)
-            except BadRequest:
-                print("Error: Could not fetch userid {} for AFK module".format(user_id))
-                return
-            fst_name = chat.first_name
-
-            check_afk(update, context, user_id, fst_name, userc_id)
-
-    elif message.reply_to_message:
-        user_id = message.reply_to_message.from_user.id
-        fst_name = message.reply_to_message.from_user.first_name
-        check_afk(update, context, user_id, fst_name, userc_id)
-
-
-def check_afk(update, context, user_id, fst_name, userc_id):
-    if sql.is_afk(user_id):
-        user = sql.check_afk_status(user_id)
-        if int(userc_id) == int(user_id):
-            return
-        if not user.reason:
-            res = "{} is afk".format(fst_name)
-            update.effective_message.reply_text(res)
+    if len(ctx.command) == 1 and not ctx.reply_to_message:
+        details = {
+            "type": "text",
+            "time": time.time(),
+            "data": None,
+            "reason": None,
+        }
+    elif len(ctx.command) > 1 and not ctx.reply_to_message:
+        _reason = (ctx.text.split(None, 1)[1].strip())[:100]
+        details = {
+            "type": "text_reason",
+            "time": time.time(),
+            "data": None,
+            "reason": _reason,
+        }
+    elif len(ctx.command) == 1 and ctx.reply_to_message.animation:
+        _data = ctx.reply_to_message.animation.file_id
+        details = {
+            "type": "animation",
+            "data": _data,
+            "reason": None,
+        }
+    elif len(ctx.command) > 1 and ctx.reply_to_message.animation:
+        _data = ctx.reply_to_message.animation.file_id
+        _reason = (ctx.text.split(None, 1)[1].strip())[:100]
+        details = {
+            "type": "animation",
+            "time": time.time(),
+            "data": _data,
+            "reason": _reason,
+        }
+    elif len(ctx.command) == 1 and ctx.reply_to_message.photo:
+        await app.download_media(ctx.reply_to_message, file_name=f"{user_id}.jpg")
+        details = {
+            "type": "photo",
+            "time": time.time(),
+            "data": None,
+            "reason": None,
+        }
+    elif len(ctx.command) > 1 and ctx.reply_to_message.photo:
+        await app.download_media(ctx.reply_to_message, file_name=f"{user_id}.jpg")
+        _reason = ctx.text.split(None, 1)[1].strip()
+        details = {
+            "type": "photo",
+            "time": time.time(),
+            "data": None,
+            "reason": _reason,
+        }
+    elif len(ctx.command) == 1 and ctx.reply_to_message.sticker:
+        if ctx.reply_to_message.sticker.is_animated:
+            details = {
+                "type": "text",
+                "time": time.time(),
+                "data": None,
+                "reason": None,
+            }
         else:
-            res = "{} is afk.\nReason: <code>{}</code>".format(
-                html.escape(fst_name), html.escape(user.reason)
-            )
-            update.effective_message.reply_text(res, parse_mode="html")
+            await app.download_media(ctx.reply_to_message, file_name=f"{user_id}.jpg")
+            details = {
+                "type": "photo",
+                "time": time.time(),
+                "data": None,
+                "reason": None,
+            }
+    elif len(ctx.command) > 1 and ctx.reply_to_message.sticker:
+        _reason = (ctx.text.split(None, 1)[1].strip())[:100]
+        if ctx.reply_to_message.sticker.is_animated:
+            details = {
+                "type": "text_reason",
+                "time": time.time(),
+                "data": None,
+                "reason": _reason,
+            }
+        else:
+            await app.download_media(ctx.reply_to_message, file_name=f"{user_id}.jpg")
+            details = {
+                "type": "photo",
+                "time": time.time(),
+                "data": None,
+                "reason": _reason,
+            }
+    else:
+        details = {
+            "type": "text",
+            "time": time.time(),
+            "data": None,
+            "reason": None,
+        }
+
+    await add_afk(user_id, details)
+    send = await ctx.reply_text(f"{ctx.from_user.mention} [`{ctx.from_user.id}`] has activated AFK mode.")
+    
 
 
-__help__ = """
-*Away from group*
- ❍ /afk <reason>*:* mark yourself as AFK(away from keyboard).
- ❍ brb <reason>*:* same as the afk command - but not a command.
-When marked as AFK, any mentions will be replied to with a message to say you're not available!
-"""
-
-AFK_HANDLER = DisableAbleCommandHandler("afk", afk, run_async=True)
-AFK_REGEX_HANDLER = DisableAbleMessageHandler(
-    Filters.regex(r"^(?i)brb(.*)$"), afk, friendly="afk", run_async=True
+# Detect user that AFK based on Yukki Repo
+@app.on_message(
+    filters.group & ~filters.bot & ~filters.via_bot,
+    group=1,
 )
-NO_AFK_HANDLER = MessageHandler(
-    Filters.all & Filters.chat_type.groups, no_longer_afk, run_async=True
-)
-AFK_REPLY_HANDLER = MessageHandler(
-    Filters.all & Filters.chat_type.groups, reply_afk, run_async=True
-)
+async def afk_watcher_func(self: Client, ctx: Message):
+    if ctx.sender_chat:
+        return
+    userid = ctx.from_user.id
+    user_name = ctx.from_user.mention
+    if ctx.entities:
+        possible = ["/afk", f"/afk@{self.me.username}", "!afk"]
+        message_text = ctx.text or ctx.caption
+        for entity in ctx.entities:
+            if entity.type == enums.MessageEntityType.BOT_COMMAND:
+                if (message_text[0:0 + entity.length]).lower() in possible:
+                    return
 
-dispatcher.add_handler(AFK_HANDLER, AFK_GROUP)
-dispatcher.add_handler(AFK_REGEX_HANDLER, AFK_GROUP)
-dispatcher.add_handler(NO_AFK_HANDLER, AFK_GROUP)
-dispatcher.add_handler(AFK_REPLY_HANDLER, AFK_REPLY_GROUP)
+    msg = ""
+    replied_user_id = 0
 
-__mod_name__ = "Aꜰᴋ​"
-__command_list__ = ["afk"]
-__handlers__ = [
-    (AFK_HANDLER, AFK_GROUP),
-    (AFK_REGEX_HANDLER, AFK_GROUP),
-    (NO_AFK_HANDLER, AFK_GROUP),
-    (AFK_REPLY_HANDLER, AFK_REPLY_GROUP),
-]
+    # Self AFK
+    verifier, reasondb = await is_afk(userid)
+    if verifier:
+        await remove_afk(userid)
+        try:
+            afktype = reasondb["type"]
+            timeafk = reasondb["time"]
+            data = reasondb["data"]
+            reasonafk = reasondb["reason"]
+            seenago = get_readable_time2((int(time.time() - timeafk)))
+            if afktype == "text":
+                afk_messages = [
+                    f"{user_name} [`{userid}`] is back. AFK for {seenago}.",
+                    f"{user_name} [`{userid}`] has returned. They were AFK for {seenago}.",
+                    f"{user_name} [`{userid}`] is no longer AFK.",
+                    f"{user_name} [`{userid}`] is back in action! They were away for {seenago}.",
+                    f"Welcome back, {user_name} [`{userid}`]! They were AFK for {seenago}.",
+                ]
+                msg += random.choice(afk_messages)
+            if afktype == "text_reason":
+                afk_messages = [
+                    f"{user_name} [`{userid}`] is back. AFK for {seenago}. Reason: {reasonafk}",
+                    f"{user_name} [`{userid}`] has returned. They were AFK for {seenago}. Reason: {reasonafk}",
+                    f"{user_name} [`{userid}`] is no longer AFK. Reason: {reasonafk}",
+                    f"{user_name} [`{userid}`] is back in action! They were away for {seenago}. Reason: {reasonafk}",
+                    f"Welcome back, {user_name} [`{userid}`]! They were AFK for {seenago}. Reason: {reasonafk}",
+                ]
+                msg += random.choice(afk_messages)
+            if afktype == "animation":
+                if str(reasonafk) == "None":
+                    send = await ctx.reply_animation(data, caption=f"{user_name} [`{userid}`] is back. AFK for {seenago}.")
+                else:
+                    send = await ctx.reply_animation(data, caption=f"{user_name} [`{userid}`] is back. AFK for {seenago}. Reason: {reasonafk}")
+            if afktype == "photo":
+                if str(reasonafk) == "None":
+                    send = await ctx.reply_photo(photo=f"downloads/{userid}.jpg", caption=f"{user_name} [`{userid}`] is back. AFK for {seenago}.")
+                else:
+                    send = await ctx.reply_photo(photo=f"downloads/{userid}.jpg", caption=f"{user_name} [`{userid}`] is back. AFK for {seenago}. Reason: {reasonafk}")
+        except:
+            msg += f"{user_name} [`{userid}`] is online."
+
+    # Replied to a User which is AFK
+    if ctx.reply_to_message:
+        try:
+            replied_first_name = ctx.reply_to_message.from_user.mention
+            replied_user_id = ctx.reply_to_message.from_user.id
+            verifier, reasondb = await is_afk(replied_user_id)
+            if verifier:
+                try:
+                    afktype = reasondb["type"]
+                    timeafk = reasondb["time"]
+                    data = reasondb["data"]
+                    reasonafk = reasondb["reason"]
+                    seenago = get_readable_time2((int(time.time() - timeafk)))
+                    if afktype == "text":
+                        replied_afk_messages = [
+                            f"{replied_first_name} [`{replied_user_id}`] is AFK for {seenago}.",
+                            f"{replied_first_name} [`{replied_user_id}`] is currently away. Please expect a delayed response.",
+                            f"{replied_first_name} [`{replied_user_id}`] is temporarily unavailable. They will get back to you soon.",
+                            f"{replied_first_name} [`{replied_user_id}`] is AFK. Please leave a message and they will reply when they return.",
+                        ]
+                        msg += random.choice(replied_afk_messages)
+                    if afktype == "text_reason":
+                        replied_afk_messages = [
+                            f"{replied_first_name} [`{replied_user_id}`] is AFK for {seenago}. Reason: {reasonafk}",
+                            f"{replied_first_name} [`{replied_user_id}`] is currently away. Reason: {reasonafk}",
+                            f"{replied_first_name} [`{replied_user_id}`] is temporarily unavailable. Reason: {reasonafk}",
+                            f"{replied_first_name} [`{replied_user_id}`] is AFK. Reason: {reasonafk} Please leave a message and they will reply when they return.",
+                        ]
+                        msg += random.choice(replied_afk_messages)
+                    if afktype == "animation":
+                        if str(reasonafk) == "None":
+                            send = await ctx.reply_animation(data, caption=f"{replied_first_name} [`{replied_user_id}`] is AFK for {seenago}.")
+                        else:
+                            send = await ctx.reply_animation(data, caption=f"{replied_first_name} [`{replied_user_id}`] is AFK for {seenago}. Reason: {reasonafk}")
+                    if afktype == "photo":
+                        if str(reasonafk) == "None":
+                            send = await ctx.reply_photo(photo=f"downloads/{replied_user_id}.jpg", caption=f"{replied_first_name} [`{replied_user_id}`] is AFK for {seenago}.")
+                        else:
+                            send = await ctx.reply_photo(photo=f"downloads/{replied_user_id}.jpg", caption=f"{replied_first_name} [`{replied_user_id}`] is AFK for {seenago}. Reason: {reasonafk}")
+                except:
+                    msg += f"{replied_first_name} [`{replied_user_id}`] is online."
+        except:
+            pass
+
+    # Mentioning a User which is AFK
+    if ctx.entities:
+        for entity in ctx.entities:
+            if entity.type == enums.MessageEntityType.MENTION or entity.type == enums.MessageEntityType.TEXT_MENTION:
+                try:
+                    user_id_mentioned = ctx.text[entity.offset:entity.offset + entity.length].replace("@", "")
+                    mentioned_user_info = await app.get_users(user_ids=int(user_id_mentioned))
+                    mentioned_user_first_name = mentioned_user_info[0].mention
+                    verifier, reasondb = await is_afk(int(user_id_mentioned))
+                    if verifier:
+                        afktype = reasondb["type"]
+                        timeafk = reasondb["time"]
+                        data = reasondb["data"]
+                        reasonafk = reasondb["reason"]
+                        seenago = get_readable_time2((int(time.time() - timeafk)))
+                        if afktype == "text":
+                            mentioned_afk_messages = [
+                                f"{mentioned_user_first_name} [`{user_id_mentioned}`] is AFK for {seenago}.",
+                                f"{mentioned_user_first_name} [`{user_id_mentioned}`] is currently away. Please expect a delayed response.",
+                                f"{mentioned_user_first_name} [`{user_id_mentioned}`] is temporarily unavailable. They will get back to you soon.",
+                                f"{mentioned_user_first_name} [`{user_id_mentioned}`] is AFK. Please leave a message and they will reply when they return.",
+                            ]
+                            msg += random.choice(mentioned_afk_messages)
+                        if afktype == "text_reason":
+                            mentioned_afk_messages = [
+                                f"{mentioned_user_first_name} [`{user_id_mentioned}`] is AFK for {seenago}. Reason: {reasonafk}",
+                                f"{mentioned_user_first_name} [`{user_id_mentioned}`] is currently away. Reason: {reasonafk}",
+                                f"{mentioned_user_first_name} [`{user_id_mentioned}`] is temporarily unavailable. Reason: {reasonafk}",
+                                f"{mentioned_user_first_name} [`{user_id_mentioned}`] is AFK. Reason: {reasonafk} Please leave a message and they will reply when they return.",
+                            ]
+                            msg += random.choice(mentioned_afk_messages)
+                        if afktype == "animation":
+                            if str(reasonafk) == "None":
+                                send = await ctx.reply_animation(data, caption=f"{mentioned_user_first_name} [`{user_id_mentioned}`] is AFK for {seenago}.")
+                            else:
+                                send = await ctx.reply_animation(data, caption=f"{mentioned_user_first_name} [`{user_id_mentioned}`] is AFK for {seenago}. Reason: {reasonafk}")
+                        if afktype == "photo":
+                            if str(reasonafk) == "None":
+                                send = await ctx.reply_photo(photo=f"downloads/{user_id_mentioned}.jpg", caption=f"{mentioned_user_first_name} [`{user_id_mentioned}`] is AFK for {seenago}.")
+                            else:
+                                send = await ctx.reply_photo(photo=f"downloads/{user_id_mentioned}.jpg", caption=f"{mentioned_user_first_name} [`{user_id_mentioned}`] is AFK for {seenago}. Reason: {reasonafk}")
+                except:
+                    pass
+
+    if msg != "":
+        await ctx.reply_text(msg)
