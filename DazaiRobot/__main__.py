@@ -92,8 +92,7 @@ buttons = [
     [
         InlineKeyboardButton(
             text="🍁 ʜᴇʟᴩ & ᴄᴏᴍᴍᴀɴᴅs 🍁",
-            callback_data="help_back"),
-        ),
+            callback_data="help_back"),        
     ],
 ]
 
