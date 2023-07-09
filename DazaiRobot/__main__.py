@@ -71,7 +71,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
     
 PM_START_TEX = """
-ʜᴇʟʟᴏ `{}`, ʜᴏᴡ ᴀʀᴇ ʏᴏᴜ \nᴡᴀɪᴛ ᴀ ᴍᴏᴍᴇɴᴛ ʙʀᴏ . . . 
+ʜᴇʟʟᴏ `{}`, ᴡᴀɪᴛ ᴀ ᴍᴏᴍᴇɴᴛ ʙʀᴏ . . . 
 """
 
 
@@ -86,7 +86,7 @@ PM_START_TEXT = """
 buttons = [
         [
         InlineKeyboardButton(
-            text="⛩️ sᴜᴍᴍᴏɴ ᴍᴇ ⛩️",
+            text="⚓ sᴜᴍᴍᴏɴ ᴍᴇ ⚓",
             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
         ),
     ],
@@ -100,9 +100,10 @@ buttons = [
 ]
 
 HELP_STRINGS = f"""
-     » [{BOT_NAME}](https://telegra.ph/file/14191d1c1439b3b04583b.jpg)
+     [{BOT_NAME}](https://telegra.ph/file/14191d1c1439b3b04583b.jpg)
 ✦━━━━━━━━━━━━━━━━━━━━✦
-» *ᴄʟɪᴄᴋ ᴏɴ ᴀ sᴘᴇᴄɪғɪᴄ ᴍᴏᴅᴜʟᴇ ᴛᴏ ɢᴇᴛ ɪᴛ's ɢᴜɪᴅᴇʟɪɴᴇs*.
+➼ *ᴄʟɪᴄᴋ ᴏɴ ᴀ sᴘᴇᴄɪғɪᴄ ᴍᴏᴅᴜʟᴇ ᴛᴏ ɢᴇᴛ ɪᴛ's ɢᴜɪᴅᴇʟɪɴᴇs*.
+✦━━━━━━━━━━━━━━━━━━━━✦
 """
 
 IMPORTED = {}
@@ -206,8 +207,10 @@ def start(update: Update, context: CallbackContext):
             )
             
             time.sleep(0.1)
+            lol.edit_text("💥")
+            time.sleep(0.5)
             lol.edit_text("⚡")
-            time.sleep(1.0)
+            time.sleep(0.5)
             lol.edit_text("ꜱᴛᴀʀᴛɪɴɢ.")
             time.sleep(0.2)
             lol.edit_text("ꜱᴛᴀʀᴛɪɴɢ..")
