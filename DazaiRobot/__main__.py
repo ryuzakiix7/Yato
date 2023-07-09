@@ -100,7 +100,7 @@ buttons = [
 ]
 
 HELP_STRINGS = f"""
-» [{BOT_NAME}](https://telegra.ph/file/14191d1c1439b3b04583b.jpg) *ᴇxᴄʟᴜsɪᴠᴇ ꜰᴇᴀᴛᴜʀᴇs*
+     » [{BOT_NAME}](https://telegra.ph/file/14191d1c1439b3b04583b.jpg)
 ✦━━━━━━━━━━━━━━━━━━━━✦
 » *ᴄʟɪᴄᴋ ᴏɴ ᴀ sᴘᴇᴄɪғɪᴄ ᴍᴏᴅᴜʟᴇ ᴛᴏ ɢᴇᴛ ɪᴛ's ɢᴜɪᴅᴇʟɪɴᴇs*.
 """
