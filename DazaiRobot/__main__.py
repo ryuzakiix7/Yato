@@ -76,31 +76,31 @@ PM_START_TEX = """
 
 
 PM_START_TEXT = """
-*ʜᴇʏ* {}! *ᴛʜɪs ɪs* ᴅᴀ𝓩ᴀɪ 💕
-✦⋆⋇────────────────⋇⋆✦
-⦿ *ɪ'ᴍ ᴀ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ʙᴀsᴇᴅ ᴏɴ ʙᴜɴɢᴏ sᴛʀᴀʏ ᴅᴏɢs ᴀɴɪᴍᴇ*.
-✦⋆⋇────────────────⋇⋆✦
-[⦿](https://graph.org/file/c6b7b35777e116f9b5e97.jpg) *ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ.*
+*ʜᴇʏ* {}! *ᴛʜɪs ɪs* ᴛᴏᴊɪ 
+
+⦿ *ɪ'ᴍ ᴀ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ ꜱᴏᴍᴇ ꜰᴜɴɴ ᴍᴏᴅᴜʟᴇꜱ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴍᴀɴᴀɢᴇ ɪᴛ ᴡɪᴛʜ ᴘᴏᴡᴇʀꜰᴜʟ ʙᴏᴛ*.
+━━━━━━━━━━━━━━━━━━━
+[⦿](https://te.legra.ph/file/8b3eacad8b1504fcf2fa8.jpg) *ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ.*
 """
 
 buttons = [
         [
         InlineKeyboardButton(
-            text="⚓ sᴜᴍᴍᴏɴ ᴍᴇ ⚓",
+            text="ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ",
             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
         ),
     ],
     [
-        InlineKeyboardButton(text="ᴅᴇᴠᴇʟᴏᴩᴇʀ 🫧", url=f"tg://user?id={OWNER_ID}"),
-        InlineKeyboardButton(text="sᴜᴩᴩᴏʀᴛ ♻️", url=f"https://t.me/{SUPPORT_CHAT}"),
+        InlineKeyboardButton(text="ᴏᴡɴᴇʀ", url=f"tg://user?id={OWNER_ID}"),
+        InlineKeyboardButton(text="sᴜᴩᴩᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"),
     ],
     [
-        InlineKeyboardButton(text="🍁 ʜᴇʟᴩ & ᴄᴏᴍᴍᴀɴᴅs 🍁", callback_data="help_back"),
+        InlineKeyboardButton(text="◎ᴄᴏᴍᴍᴀɴᴅs◎", callback_data="help_back"),
     ],
 ]
 
 HELP_STRINGS = f"""
-     [{BOT_NAME}](https://telegra.ph/file/14191d1c1439b3b04583b.jpg)
+     [{BOT_NAME}](https://te.legra.ph/file/8b3eacad8b1504fcf2fa8.jpg)
 ✦━━━━━━━━━━━━━━━━━━━━✦
 ➼ *ᴄʟɪᴄᴋ ᴏɴ ᴀ sᴘᴇᴄɪғɪᴄ ᴍᴏᴅᴜʟᴇ ᴛᴏ ɢᴇᴛ ɪᴛ's ɢᴜɪᴅᴇʟɪɴᴇs*.
 ✦━━━━━━━━━━━━━━━━━━━━✦
@@ -207,11 +207,7 @@ def start(update: Update, context: CallbackContext):
             )
             
             time.sleep(0.1)
-            lol.edit_text("💥")
-            time.sleep(0.2)
-            lol.edit_text("⚡")
-            time.sleep(0.2)
-            lol.edit_text("ꜱᴛᴀʀᴛɪɴɢ.")
+            lol.edit_text("ꜱᴛʀᴛɪɴɢ.")
             time.sleep(0.2)
             lol.edit_text("ꜱᴛᴀʀᴛɪɴɢ..")
             time.sleep(0.2)
