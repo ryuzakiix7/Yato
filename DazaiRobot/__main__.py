@@ -207,6 +207,10 @@ def start(update: Update, context: CallbackContext):
             )
             
             time.sleep(0.1)
+            lol.edit_text("⚡")
+            time.sleep(0.1)
+            lol.edit_text("⚡")
+            time.sleep(0.1)
             lol.edit_text("ꜱᴛʀᴛɪɴɢ.")
             time.sleep(0.2)
             lol.edit_text("ꜱᴛᴀʀᴛɪɴɢ..")
