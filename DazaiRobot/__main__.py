@@ -76,11 +76,11 @@ PM_START_TEX = """
 
 
 PM_START_TEXT = """
-*ʜᴇʏ* {}! *ᴛʜɪs ɪs* ᴛᴏᴊɪ ⚡
+ʜᴇʏ {}! ᴛʜɪs ɪs ᴛᴏᴊɪ ⚡
 ━━━━━━━━━━━━━━━━━
 ⦿ ɪ'ᴍ ᴀ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ ꜱᴏᴍᴇ ꜰᴜɴɴ ᴍᴏᴅᴜʟᴇꜱ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴍᴀɴᴀɢᴇ ɪᴛ ᴡɪᴛʜ ᴘᴏᴡᴇʀꜰᴜʟ ʙᴏᴛ.
 ━━━━━━━━━━━━━━━━━
-[⦿](https://te.legra.ph/file/8b3eacad8b1504fcf2fa8.jpg) *ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ.*
+[⦿](https://te.legra.ph/file/8b3eacad8b1504fcf2fa8.jpg) ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ.
 """
 
 buttons = [
@@ -91,11 +91,11 @@ buttons = [
         ),
     ],
     [
-        InlineKeyboardButton(text="ᴏᴡɴᴇʀ", url=f"tg://user?id={OWNER_ID}"),
-        InlineKeyboardButton(text="sᴜᴩᴩᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"),
+        InlineKeyboardButton(text= "ᴏᴡɴᴇʀ ", url=f"tg://user?id={OWNER_ID}"),
+        InlineKeyboardButton(text= "sᴜᴩᴩᴏʀᴛ ", url=f"https://t.me/{SUPPORT_CHAT}"),
     ],
     [
-        InlineKeyboardButton(text="◎ᴄᴏᴍᴍᴀɴᴅs◎", callback_data="help_back"),
+        InlineKeyboardButton(text=" ◎ᴄᴏᴍᴍᴀɴᴅs◎ ", callback_data="help_back"),
     ],
 ]
 
