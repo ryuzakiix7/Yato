@@ -257,7 +257,7 @@ def info(update: Update, context: CallbackContext):
     if user.id == OWNER_ID:
         text += "\n\n• Disaster Level: God</b>.\n"
     elif user.id in DEV_USERS:
-        text += "\n\• Disaster Level: Master</b>.\n"
+        text += "\n\n• Disaster Level: Master</b>.\n"
     elif user.id in DRAGONS:
         text += "\n\n• Disaster Level: Dragon</b>.\n"
     elif user.id in DEMONS:
