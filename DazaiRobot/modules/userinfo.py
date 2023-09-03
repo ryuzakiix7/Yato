@@ -255,18 +255,17 @@ def info(update: Update, context: CallbackContext):
         text += f"\n\n<b>ʜᴇᴀʟᴛʜ:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
 
     if user.id == OWNER_ID:
-        text += "\n\n• Disaster Level: God</b>.\n"
+        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ɢᴏᴅ</b>.\n"
     elif user.id in DEV_USERS:
-        text += "\n\n• Disaster Level: Master</b>.\n"
+        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs ᴀ ᴍᴇᴍʙᴇʀ ᴏғ <b>ʜᴀᴛᴀᴋᴇ ᴄʟᴀɴ</b>.\n"
     elif user.id in DRAGONS:
-        text += "\n\n• Disaster Level: Dragon</b>.\n"
+        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴅʀᴀɢᴏɴ</b>.\n"
     elif user.id in DEMONS:
-        text += "\n\n• Disaster Level: Demon</b>.\n"
+        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴅᴇᴍᴏɴ</b>.\n"
     elif user.id in TIGERS:
-        text += "\n\n• Disaster Level: Tiger</b>.\n"
+        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴛɪɢᴇʀ</b>.\n"
     elif user.id in WOLVES:
-        text += "\n\n• Disaster Level: Wolf</b>.\n"
-
+        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴡᴏʟғ</b>.\n"
     try:
         user_member = chat.get_member(user.id)
         if user_member.status == "administrator":
