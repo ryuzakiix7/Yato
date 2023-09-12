@@ -17,7 +17,7 @@ async def repo(_, message: Message):
 
 ɪ ᴀᴍ [{BOT_NAME}](https://t.me/{BOT_USERNAME})**
 
-**» ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ :** ᴀɴᴏɴʏᴍᴏᴜs
+**» ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ :** Levi
 **» ᴩʏᴛʜᴏɴ ᴠᴇʀsɪᴏɴ :** `{y()}`
 **» ʟɪʙʀᴀʀʏ ᴠᴇʀsɪᴏɴ :** `{o}` 
 **» ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀsɪᴏɴ :** `{s}` 
@@ -29,7 +29,7 @@ async def repo(_, message: Message):
                     InlineKeyboardButton("ᴅᴇᴠᴇʟᴏᴘᴇʀ", user_id=OWNER_ID),
                     InlineKeyboardButton(
                         "sᴏᴜʀᴄᴇ",
-                        url="https://github.com/Anonymous-068/DazaiRobot",
+                        url="https://github.com/Anonymous-068/Kakashiii",
                     ),
                 ]
             ]
