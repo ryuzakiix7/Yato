@@ -88,7 +88,7 @@ def gban(update: Update, context: CallbackContext):
 
     if int(user_id) in DRAGONS:
         message.reply_text(
-            "I spy, with my little eye... a disaster! Why are you guys turning on each other?"
+            "Ohh ohh wow ye dekho ye bsdiwala mere apno ko hi global ban krega ohhh hoo"
         )
         return
 
