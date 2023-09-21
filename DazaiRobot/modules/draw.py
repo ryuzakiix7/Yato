@@ -1,7 +1,7 @@
 # Copyright 2023 Qewertyy, MIT License
 
 from pyrogram import Client, filters, types as t
-from Utils import getText,paginate_models,ImageGeneration
+from utils import getText,paginate_models,ImageGeneration
 from bot import Models
 Database = {}
 
