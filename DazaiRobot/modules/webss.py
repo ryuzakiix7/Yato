@@ -5,7 +5,7 @@ import requests
 from aiohttp import ClientSession
 from pyrogram import filters
 from pyrogram.types import Message
-from Hiroko import Hiroko
+from Dazai import Dazai
 
 aiohttpsession = ClientSession()
 
