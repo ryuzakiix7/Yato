@@ -2,7 +2,7 @@
 
 import os
 from pyrogram import filters
-from DazaiRobot import ptb as app, BOT_USERNAME
+from DazaiRobot import pbot as app, BOT_USERNAME
 from DazaiRobot.Config import COMMAND_HANDLER
 from DazaiRobot.helpers import ImageGeneration, ImageModels, getText
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaDocument
