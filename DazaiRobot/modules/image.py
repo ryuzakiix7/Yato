@@ -159,7 +159,7 @@ async def generate(_, message):
     for i in ImageModels:
         btns.append(InlineKeyboardButton(text=i,callback_data=f"draw.{ImageModels[i]}.{user.id}"))
     btns = [[btns[0],btns[1]],[btns[2],btns[3]],[btns[4],btns[5]]]
-    await message.reply_photo("https://graph.org//file/a24ad0babb868d539b744.jpg", caption=f"**SELECT A MODEL TO GENERATE**",reply_markup=InlineKeyboardMarkup(btns))
+    await message.reply_photo("https://te.legra.ph/file/8f9778eb88706e64493da.jpg", caption=f"**SELECT A MODEL TO GENERATE**",reply_markup=InlineKeyboardMarkup(btns))
 
 @app.on_callback_query(filters.regex("^draw.(.*)"))
 async def draw(_,query):
@@ -170,11 +170,11 @@ async def draw(_,query):
         return await query.answer("Not Your Query!")
     promptdata = PromptDB.get(auth_user,None)
     if promptdata is None:
-        return await query.edit_message_text("something went wrong report it at @DevsOops")
+        return await query.edit_message_text("something went wrong report it at @kakashi_sprt")
     await query.edit_message_text("Please wait, generating your image")
     img_url = await ImageGeneration(int(data[1]),promptdata['prompt'])
     if img_url is None or img_url == 2 or img_url ==1:
-        return await query.edit_message_text("something went wrong report it at @DevsOops")
+        return await query.edit_message_text("something went wrong report it at @kakashi_sprt")
     images = []
     await query.message.delete()
     del PromptDB[auth_user]
