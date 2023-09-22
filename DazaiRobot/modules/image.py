@@ -1,6 +1,6 @@
 import os
 from pyrogram import filters
-from DazaiRobot import ptb as app, 
+from DazaiRobot import ptb as app 
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup,InputMediaDocument
 import asyncio
 from lexica import AsyncClient
