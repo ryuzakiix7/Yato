@@ -5,7 +5,7 @@ from pyrogram import filters
 from DazaiRobot import pbot as app, BOT_USERNAME
 from DazaiRobot.helpers import ImageGeneration, ImageModels, getText
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaDocument
-
+COMMAND_HANDLER = "/"
 PromptDB = {}
 
 @app.on_message(filters.command("draw", COMMAND_HANDLER))
