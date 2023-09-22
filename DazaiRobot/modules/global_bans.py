@@ -82,7 +82,7 @@ def gban(update: Update, context: CallbackContext):
 
     if int(user_id) in DEV_USERS:
         message.reply_text(
-            "That user is part of the Association\nI can't act against our own."
+            "Abe baap h Mera wo aur mai Baap se bakchodi ni krta tu soja bsdk"
         )
         return
 
