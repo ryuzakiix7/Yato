@@ -82,7 +82,7 @@ PM_START_TEXT = """
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 ❍ *Uptime:* `{}`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-[➛](https://telegra.ph/file/3c956af40f476e825f0e2.jpg) *ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
+[➛](https://te.legra.ph/file/af812f77650bee8d3e4b9.jpg) *ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
 """
 
 buttons = [
@@ -97,7 +97,7 @@ buttons = [
     ],
     [
         InlineKeyboardButton(text="sᴜᴩᴩᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"),
-        InlineKeyboardButton(text="ʟᴇᴀғ ᴠɪʟʟᴀɢᴇ", url=f"https://t.me/hiddenleafvillagee"),
+        InlineKeyboardButton(text="Updates", url=f"https://t.me/DazaiXHatake_Updates"),
     ],
 ]
 
