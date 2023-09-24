@@ -1,7 +1,9 @@
 import requests as r
 from pyrogram.types import InputMediaPhoto
-from pyrogram import filters, Client
+from pyrogram import filters
 from pyrogram.types import Message
+
+from DazaiRobot import pbot
 
 async def getText(message):
     """Extract Text From Commands"""
@@ -16,7 +18,7 @@ async def getText(message):
     else:
         return None
 
-@Client.on_message(filters.command("images"))
+@pbot.on_message(filters.command("images"))
 async def get_images(_, message: Message):
     query = await getText(message)
     text = query.replace(" ", "%")
