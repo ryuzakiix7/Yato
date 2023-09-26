@@ -6,7 +6,7 @@ import requests
 from aiohttp import ClientSession
 from pyrogram import filters
 from pyrogram.types import *
-from DazaiRobot import ptb as  Hiroko
+from DazaiRobot import pbot as  Hiroko
 
 
 
