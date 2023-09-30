@@ -9,7 +9,7 @@ from pyrogram.types import Message
 
 #DazaiRobot => Your Bots File Name
 import DazaiRobot.modules.sql.users_sql as sql
-from DazaiRobot import DEV_USERS, OWNER_ID, pgram
+from DazaiRobot import DEV_USERS, OWNER_ID, pbot as pgram
 from DazaiRobot.modules.sql.users_sql import get_all_users
 
 # get_arg function to retrieve an argument from a message
