@@ -3,32 +3,33 @@
  # PROVIDED BY https://t.me/ProjectCodeX 
   
  # IMPORTS 
- import asyncio 
- from pyrogram import Client, filters 
- from pyrogram.types import Message 
+ import asyncio  
+from pyrogram import Client, filters  
+from pyrogram.types import Message  
   
- #REPO => Your Bots File Name 
- import REPO.modules.sql.users_sql as sql 
- from REPO import DEV_USERS, OWNER_ID, pgram 
- from REPO.modules.sql.users_sql import get_all_users 
+#REPO => Your Bots File Name  
+import REPO.modules.sql.users_sql as sql  
+from REPO import DEV_USERS, OWNER_ID, pgram  
+from REPO.modules.sql.users_sql import get_all_users  
   
- # get_arg function to retrieve an argument from a message 
- def get_arg(message): 
-     args = message.text.split(" ") 
-     if len(args) > 1: 
-         return args[1] 
-     else: 
-         return None 
+# get_arg function to retrieve an argument from a message  
+def get_arg(message):  
+    args = message.text.split(" ")  
+    if len(args) > 1:  
+        return args[1]  
+    else:  
+        return None  
   
- # Broadcast Function 
- @pgram.on_message(filters.command("broadcast")) 
- async def broadcast_cmd(client: Client, message: Message): 
-     user_id = message.from_user.id 
-     texttt = message.text.split(" ") 
+# Broadcast Function  
+
+@pgram.on_message(filters.command("broadcast"))  
+async def broadcast_cmd(client: Client, message: Message):  
+    user_id = message.from_user.id  
+    texttt = message.text.split(" ")  
   
-     if user_id not in [OWNER_ID] + DEV_USERS: 
-         await message.reply_text( 
-             "You are not authorized to use this command. Only the owner and authorized users can use it." 
+    if user_id not in [OWNER_ID] + DEV_USERS:  
+        await message.reply_text(  
+            "You are not authorized to use this command. Only the owner and authorized users can use it."
          ) 
          return 
   
