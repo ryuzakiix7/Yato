@@ -7,10 +7,10 @@ import asyncio
 from pyrogram import Client, filters  
 from pyrogram.types import Message  
   
-#REPO => Your Bots File Name  
-import REPO.modules.sql.users_sql as sql  
-from REPO import DEV_USERS, OWNER_ID, pgram  
-from REPO.modules.sql.users_sql import get_all_users  
+#DazaiRobot => Your Bots File Name  
+import DazaiRobot.modules.sql.users_sql as sql  
+from DazaiRobot import DEV_USERS, OWNER_ID, pgram  
+from DazaiRobot.modules.sql.users_sql import get_all_users  
   
 # get_arg function to retrieve an argument from a message  
 def get_arg(message):  
