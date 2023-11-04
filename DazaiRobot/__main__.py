@@ -82,13 +82,13 @@ PM_START_TEXT = """
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 ❍ *Uptime:* `{}`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-[➛](https://te.legra.ph/file/af812f77650bee8d3e4b9.jpg) *ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
+[➛](https://te.legra.ph/file/8b37d1c52b6d17e3a8eea.mp4) *ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
 """
 
 buttons = [
         [
         InlineKeyboardButton(
-            text=f"➕ 𝗦𝘂𝗺𝗺𝗼𝗻 𝗠𝗲 ➕",
+            text=f"➕ 𝗔𝗗𝗗 ➕",
             url=f"https://telegram.dog/{BOT_USERNAME}?startgroup=true",
         )
     ],
@@ -97,12 +97,12 @@ buttons = [
     ],
     [
         InlineKeyboardButton(text="sᴜᴩᴩᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"),
-        InlineKeyboardButton(text="Updates", url=f"https://t.me/DazaiXHatake_Updates"),
+        InlineKeyboardButton(text="Updates", url=f"https://t.me/SHEDOW_LOGSS"),
     ],
 ]
 
 HELP_STRINGS = f"""
-[❃](https://telegra.ph/file/d7768fb3961eba7f49de7.jpg)* {BOT_NAME} ᴇxᴄʟᴜsɪᴠᴇ ꜰᴇᴀᴛᴜʀᴇs*
+[❃](https://te.legra.ph/file/349111caa49c7234133a3.jpg)* {BOT_NAME} ᴇxᴄʟᴜsɪᴠᴇ ꜰᴇᴀᴛᴜʀᴇs*
 
 ➲ /start : ꜱᴛᴀʀᴛꜱ ᴍᴇ | ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴍᴇ ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴅᴏɴᴇ ɪᴛ.
 ➲ /help  : ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ ꜱᴇᴄᴛɪᴏɴ.
