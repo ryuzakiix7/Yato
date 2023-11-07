@@ -6,7 +6,7 @@ import requests as rr
 from pyrogram import filters
 from pyrogram.types import Message
 
-from HuTao import app, COMMAND_HANDLER
+from DazaiRobot import app, COMMAND_HANDLER
 
 #----------------TOKEN------------------
 TOKEN="1737646273:SSTCWK" #GET THIS TOKEN FROM @NovaXApiBot
