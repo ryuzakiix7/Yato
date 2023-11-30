@@ -1,26 +1,28 @@
+━━━━━━━━━━━━━━━━━━━━
+
 <h2 align="center">
-     『 Kakashiii ✘ Robot 』
+    ──「  𝗔𝗻𝘆𝗮 ✘ 𝙍𝙊𝘽𝙊𝙏 」──
 </h2>
 
 
-_**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [KAKASHIII](https://t.me/Kakashi_ultrabot)**_
+_**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [Shadow](https://t.me/ShadowXProBot)**_
 
 
 <p align="center">
-<a href="https://github.com/Anonymous-068/DazaiRobot/stargazers"><img src="https://img.shields.io/github/stars/Anonymous-068/DazaiRobot?color=black&logo=github&logoColor=black&style=for-the-badge" alt="Stars" /></a>
-<a href="https://github.com/Anonymous-068/DazaiRobot/network/members"> <img src="https://img.shields.io/github/forks/Anonymous-068/DazaiRobot?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
-<a href="https://github.com/Anonymous-068/DazaiRobot/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License-MIT-blueviolet?style=for-the-badge" alt="License" /> </a>
+<a href="https://github.com/shauryanoobhai/DazaiRobot/stargazers"><img src="https://img.shields.io/github/stars/shauryanoobhai/DazaiRobot?color=black&logo=github&logoColor=black&style=for-the-badge" alt="Stars" /></a>
+<a href="https://github.com/adi6804/DazaiRobot/network/members"> <img src="https://img.shields.io/github/forks/shauryanoobhai/DazaiRobot?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
+<a href="https://github.com/shauryanoobhai/DazaiRobot/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License-MIT-blueviolet?style=for-the-badge" alt="License" /> </a>
 <a href="https://www.python.org/"> <img src="https://img.shields.io/badge/Written%20in-Python-skyblue?style=for-the-badge&logo=python" alt="Python" /> </a>
 <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?color=white&label=telethon&logo=python&logoColor=blue&style=for-the-badge" /></a>
 <a href="https://pypi.org/project/Pyrogram/"> <img src="https://img.shields.io/pypi/v/pyrogram?color=white&label=pyrogram&logo=python&logoColor=blue&style=for-the-badge" /></a>
-<a href="https://github.com/Anonymous-068/DazaiRobot"> <img src="https://img.shields.io/github/repo-size/Anonymous-068/DazaiRobot?color=skyblue&logo=github&logoColor=blue&style=for-the-badge" /></a>
-<a href="https://github.com/Anonymous-068/DazaiRobot/commits/Anonymous"> <img src="https://img.shields.io/github/last-commit/adi6804/DazaiRobot?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
+<a href="https://github.com/adi6804/DazaiRobot"> <img src="https://img.shields.io/github/repo-size/shauryanoobhai/DazaiRobot?color=skyblue&logo=github&logoColor=blue&style=for-the-badge" /></a>
+<a href="https://github.com/shauryanoobhai/DazaiRobot/commits/Anonymous04"> <img src="https://img.shields.io/github/last-commit/adi6804/DazaiRobot?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
 </p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━
 
 <p align="center">
-  <img src="https://te.legra.ph/file/45c8ee5b23fef33ce8bb5.jpg">
+  <img src="https://te.legra.ph/file/af91b1d8501344821fc79.jpg">
 </p>
 
 <p align="center">
@@ -31,11 +33,11 @@ _**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [KAKASHIII](https://
     『 ᴅᴇᴩʟᴏʏ ᴏɴ ʜᴇʀᴏᴋᴜ 』
 </h3>
 
-<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/Awesomeash4/Kakashiii"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-purple?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
+<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/shauryanoobhai/DazaiRobot"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 
 
 <h3 align="center">
-      『 ᴅᴇᴩʟᴏʏ ᴏɴ ᴠᴘs/ʟᴏᴄᴀʟ 』
+    ─「 ᴅᴇᴩʟᴏʏ ᴏɴ ᴠᴘs/ʟᴏᴄᴀʟ 」─
 </h3>
 
 <details>
@@ -43,7 +45,7 @@ _**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [KAKASHIII](https://
 - <b> ᴠᴘs/ʟᴏᴄᴀʟ ᴅᴇᴘʟᴏʏᴍᴇɴᴛ ᴍᴇᴛʜᴏᴅ </b>
 </h3></summary>
 
-- Get your [Necessary Variables](https://github.com/Anonymous-068/DazaiRobot/blob/master/DazaiRobot/config.py)
+- Get your [Necessary Variables](https://github.com/shauryanoobhai/DazaiRobot/blob/main/DazaiRobot/config.py)
 - Upgrade and Update by :
 `sudo apt-get update && sudo apt-get upgrade -y`
 - Install required packages by :
@@ -51,7 +53,7 @@ _**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [KAKASHIII](https://
 - Install pip by :
 `sudo pip3 install -U pip`
 - Clone the repository by :
-`git clone https://github.com/adi6804/DazaiRobot && cd DazaiRobot`
+`git clone https://github.com/shauryanoobhai/DazaiRobot && cd DazaiRobot`
 - Install/Upgrade setuptools by :
 `pip3 install --upgrade pip setuptools`
 - Install requirements by :
@@ -71,16 +73,20 @@ Press `Ctrl+C` when you're done with editing config and `:wq` to save the config
 Press `Ctrl+b` and then `d`
 
 <p align="center">
-  <img src="https://telegra.ph/file/d92033060bad9004c4ad5.jpg">
+  <img src="https://te.legra.ph/file/af91b1d8501344821fc79.jpg">
 </p>
 
 </details>
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━
 
 <h3 align="center">
     『 sᴜᴩᴩᴏʀᴛ 』
 </h3>
 
 <p align="center">
-<a href="https://telegram.me/The_Apexx"><img src="https://img.shields.io/badge/-Support%20Group-blue.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://telegram.me/axpsupport"><img src="https://img.shields.io/badge/-Support%20Group-blue.svg?style=for-the-badge&logo=Telegram"></a>
 </p>
+<p align="center">
+<a href="https://telegram.me/axpsupport"><img src="https://img.shields.io/badge/-Support%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
+</p>
+━━━━━━━━━━━━━━━━━━━━
