@@ -5,6 +5,7 @@ asyncio==3.4.3
 beautifulsoup4==4.12.2
 bing_image_downloader==1.1.2
 bleach==6.0.0
+unidecode
 bs4==0.0.1
 cachetools==4.2.2
 countryinfo==0.1.2
