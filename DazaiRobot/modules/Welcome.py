@@ -6,7 +6,7 @@ from pyrogram.types import *
 from logging import getLogger
 from pymongo import MongoClient
 from DazaiRobot import MONGO_DB_URI 
-from DazaiRobot import pbot as app, LOG_CHANNEL_ID
+from DazaiRobot import pbot as app, EVENT_LOGS as  LOG_CHANNEL_ID
 COMMAND_HANDLER = ". /".split()
 
 
