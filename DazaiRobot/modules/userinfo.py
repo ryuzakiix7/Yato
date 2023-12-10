@@ -255,7 +255,7 @@ def info(update: Update, context: CallbackContext):
         text += f"\n\n<b>ʜᴇᴀʟᴛʜ:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
 
     if user.id == OWNER_ID:
-        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs <b>Honey</b>.\n"
+        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs 𝙼𝚈 <b>Honey</b>.\n"
     elif user.id in DEV_USERS:
         text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs <b>Sweetheart</b>.\n"
     elif user.id in DRAGONS:
