@@ -6,7 +6,7 @@ from pyrogram.types import *
 from logging import getLogger
 from pymongo import MongoClient
 from DazaiRobot import MONGO_DB_URI 
-from DazaiRobot import pbot as app, EVENT_LOGS as  LOG_CHANNEL_ID
+from DazaiRobot import pbot as app, EVENT_LOGS   
 COMMAND_HANDLER = ". /".split()
 
 
@@ -155,7 +155,7 @@ USERNAME: @{user.username}
 async def bot_wel(_, message):
     for u in message.new_chat_members:
         if u.id == app.me.id:
-            await app.send_message(LOG_CHANNEL_ID, f"""
+            await app.send_message(EVENT_LOGS, f"""
 **NEW GROUP
 ➖➖➖➖➖➖➖➖➖➖➖➖
 NAME: {message.chat.title}
