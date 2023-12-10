@@ -71,7 +71,7 @@ def welcomepic(pic, user, chat, id, uname):
 
 @app.on_message(filters.command("swelcome", COMMAND_HANDLER) & ~filters.private)
 async def auto_state(_, message):
-    usage = "Usage:\n/swelcome [ENABLE|DISABLE]"
+    usage = "**Usage:**\n/swelcome [ENABLE|DISABLE]"
     if len(message.command) == 1:
         return await message.reply_text(usage)
     chat_id = message.chat.id
@@ -122,7 +122,7 @@ async def greet_group(_, member: ChatMemberUpdated):
     if (temp.MELCOW).get(f"welcome-{member.chat.id}") is not None:
         try:
             await temp.MELCOW[f"welcome-{member.chat.id}"].delete()
-            except Exception as e:
+        except Exception as e:
             LOGGER.error(e)
     try:
         welcomeimg = welcomepic(
@@ -163,9 +163,9 @@ ID: {message.chat.id}
 USERNAME: @{message.chat.username}
 ➖➖➖➖➖➖➖➖➖➖➖➖**
 """)
+            
 
-
-mod = "WELCOME"
-help = """
-» /swelcome - Turn On The Special Welcome For Groups
+__mod__ = "WELCOME"
+__help__ = """
+**» /swelcome** - Turn On The Special Welcome For Groups
 """
