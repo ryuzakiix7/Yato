@@ -1,11 +1,11 @@
 ━━━━━━━━━━━━━━━━━━━━
 
 <h2 align="center">
-    ──「  𝗔𝗻𝘆𝗮 ✘ 𝙍𝙊𝘽𝙊𝙏 」──
+    ──「  Yumeko ✘ 𝙍𝙊𝘽𝙊𝙏 」──
 </h2>
 
 
-_**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [Shadow](https://t.me/ShadowXProBot)**_
+_**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [Shadow](https://t.me/YumekoXRobot)**_
 
 
 <p align="center">
@@ -22,7 +22,7 @@ _**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [Shadow](https://t.m
 ━━━━━━━━━━━━━━━━━━━━
 
 <p align="center">
-  <img src="https://te.legra.ph/file/af91b1d8501344821fc79.jpg">
+  <img src="https://te.legra.ph/file/0a309569935a48b7f578a.jpg">
 </p>
 
 <p align="center">
