@@ -96,8 +96,8 @@ buttons = [
         InlineKeyboardButton(text="ʜᴇʟᴩ & ᴄᴏᴍᴍᴀɴᴅs", callback_data="help_back"),
     ],
     [
-        InlineKeyboardButton(text="sᴜᴩᴩᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"),
-        InlineKeyboardButton(text="Updates", url=f"https://t.me/JabamiYumekoSupport"),
+        InlineKeyboardButton(text="𝗦𝗨𝗣𝗣𝗢𝗥𝗧", url=f"https://t.me/{SUPPORT_CHAT}"),
+        InlineKeyboardButton(text="𝗛𝗢𝗡𝗘𝗬", url=f"https://t.me/bitexalt"),
     ],
 ]
 
