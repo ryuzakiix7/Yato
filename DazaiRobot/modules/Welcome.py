@@ -6,7 +6,7 @@ from pyrogram.types import *
 from logging import getLogger
 from pymongo import MongoClient
 from DazaiRobot import MONGO_DB_URI 
-from DazaiRobot import pbot as app, EVENT_LOGS   
+from DazaiRobot import pbot as app, EVENT_LOGS , LOGGER
 COMMAND_HANDLER = ". /".split()
 
 
@@ -26,7 +26,7 @@ async def rm_wlcm(chat_id : int):
         return await wlcm.delete_one({"chat_id" : chat_id})
 
 
-LOGGER = getLogger(name)
+
 
 class temp:
     ME = None
