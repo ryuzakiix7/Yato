@@ -1,4 +1,4 @@
-mport os
+import os
 from unidecode import unidecode
 from PIL import ImageDraw, Image, ImageFont, ImageChops
 from pyrogram import *
