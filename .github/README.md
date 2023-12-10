@@ -9,14 +9,14 @@ _**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [Yumeko](https://t.m
 
 
 <p align="center">
-<a href="https://github.com/shauryanoobhai/Kakashii/stargazers"><img src="https://img.shields.io/github/stars/shauryanoobhai/DazaiRobot?color=black&logo=github&logoColor=black&style=for-the-badge" alt="Stars" /></a>
-<a href="https://github.com/adi6804/DazaiRobot/network/members"> <img src="https://img.shields.io/github/forks/shauryanoobhai/DazaiRobot?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
-<a href="https://github.com/shauryanoobhai/DazaiRobot/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License-MIT-blueviolet?style=for-the-badge" alt="License" /> </a>
+<a href="https://github.com/shauryanoobhai/Kakashiii/stargazers"><img src="https://img.shields.io/github/stars/shauryanoobhai/Kakashiii?color=black&logo=github&logoColor=black&style=for-the-badge" alt="Stars" /></a>
+<a href="https://github.com/shauryanoobhai/Kakashiii/network/members"> <img src="https://img.shields.io/github/forks/shauryanoobhai/Kakashiii?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
+<a href="https://github.com/shauryanoobhai/Kakashiii/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License-MIT-blueviolet?style=for-the-badge" alt="License" /> </a>
 <a href="https://www.python.org/"> <img src="https://img.shields.io/badge/Written%20in-Python-skyblue?style=for-the-badge&logo=python" alt="Python" /> </a>
 <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?color=white&label=telethon&logo=python&logoColor=blue&style=for-the-badge" /></a>
 <a href="https://pypi.org/project/Pyrogram/"> <img src="https://img.shields.io/pypi/v/pyrogram?color=white&label=pyrogram&logo=python&logoColor=blue&style=for-the-badge" /></a>
-<a href="https://github.com/adi6804/DazaiRobot"> <img src="https://img.shields.io/github/repo-size/shauryanoobhai/DazaiRobot?color=skyblue&logo=github&logoColor=blue&style=for-the-badge" /></a>
-<a href="https://github.com/shauryanoobhai/DazaiRobot/commits/Anonymous04"> <img src="https://img.shields.io/github/last-commit/adi6804/DazaiRobot?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
+<a href="https://github.com/shauryanoobhai/Kakashiii"> <img src="https://img.shields.io/github/repo-size/shauryanoobhai/Kakashiii?color=skyblue&logo=github&logoColor=blue&style=for-the-badge" /></a>
+<a href="https://github.com/shauryanoobhai/Kakashiii/commits/Anonymous04"> <img src="https://img.shields.io/github/last-commit/shauryanoobhai/Kakashiii?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
 </p>
 
 ━━━━━━━━━━━━━━━━━━━━
@@ -33,7 +33,7 @@ _**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [Yumeko](https://t.m
     『 ᴅᴇᴩʟᴏʏ ᴏɴ ʜᴇʀᴏᴋᴜ 』
 </h3>
 
-<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/shauryanoobhai/DazaiRobot"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
+<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/shauryanoobhai/Kakashiii"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 
 
 <h3 align="center">
@@ -45,7 +45,7 @@ _**ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ ᴀs [Yumeko](https://t.m
 - <b> ᴠᴘs/ʟᴏᴄᴀʟ ᴅᴇᴘʟᴏʏᴍᴇɴᴛ ᴍᴇᴛʜᴏᴅ </b>
 </h3></summary>
 
-- Get your [Necessary Variables](https://github.com/shauryanoobhai/DazaiRobot/blob/main/DazaiRobot/config.py)
+- Get your [Necessary Variables](https://github.com/shauryanoobhai/Kakashiii/blob/main/DazaiRobot/config.py)
 - Upgrade and Update by :
 `sudo apt-get update && sudo apt-get upgrade -y`
 - Install required packages by :
