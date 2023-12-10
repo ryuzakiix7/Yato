@@ -4,14 +4,14 @@ from PIL import ImageDraw, Image, ImageFont, ImageChops
 from pyrogram import *
 from pyrogram.types import *
 from logging import getLogger
-from pymongo import MongoClient
+from async_pymongo import AsyncClient
 from DazaiRobot import MONGO_DB_URI 
 from DazaiRobot import pbot as app, EVENT_LOGS , LOGGER
 COMMAND_HANDLER = ". /".split()
 
 
 
-client = MongoClient(MONGO_DB_URI)
+client = AsyncClient(MONGO_DB_URI)
 dbnaam = client["Aaru"]
 
 wlcm = dbnaam['welcome']
