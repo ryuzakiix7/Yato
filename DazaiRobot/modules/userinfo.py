@@ -255,17 +255,17 @@ def info(update: Update, context: CallbackContext):
         text += f"\n\n<b>ʜᴇᴀʟᴛʜ:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
 
     if user.id == OWNER_ID:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>Honey</b>.\n"
+        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs <b>Honey</b>.\n"
     elif user.id in DEV_USERS:
-        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs ᴀ ᴍᴇᴍʙᴇʀ ᴏғ <b>Sweetheart</b>.\n"
+        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs <b>Sweetheart</b>.\n"
     elif user.id in DRAGONS:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>Dear Ones</b>.\n"
+        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs <b>Dear Ones</b>.\n"
     elif user.id in DEMONS:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>Lovely</b>.\n"
+        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs <b>Loved Ones</b>.\n"
     elif user.id in TIGERS:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>Darling</b>.\n"
+        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs <b>Darling</b>.\n"
     elif user.id in WOLVES:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>Baby</b>.\n"
+        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs <b>Baby</b>.\n"
     try:
         user_member = chat.get_member(user.id)
         if user_member.status == "administrator":
